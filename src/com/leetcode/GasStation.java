@@ -23,8 +23,8 @@ public class GasStation {
 	}
 
 	public static void main(String[] args) {
-		int[] gas = { 1, 2 };// { 2, 3, 1, 3, 7, 5, 9, 1, 1 };
-		int[] cost = { 2, 1 };// { 2, 7, 1, 1, 2, 6, 1, 1, 5 };
+		int[] gas = { 2, 3, 1, 3, 7, 5, 9, 1, 1 };
+		int[] cost ={ 2, 7, 1, 1, 2, 6, 1, 1, 5 };
 		GasStation sol = new GasStation();
 		System.out.println(sol.canCompleteCircuit(gas, cost));
 	}
