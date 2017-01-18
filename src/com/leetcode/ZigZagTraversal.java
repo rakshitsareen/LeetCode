@@ -1,64 +1,48 @@
 package com.leetcode;
-//TODO: Wrong solution, use stacks instead.
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class ZigZagTraversal {
 
-	public boolean leftToRightInsertion = false;
 
-		public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-	
-			if (root == null) {
-				List<List<Integer>> list = new LinkedList<>();
-				return list;
-			}
-	
-			Queue<TreeNode> queue = new LinkedList<TreeNode>();
+	public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+
+		if (root == null) {
 			List<List<Integer>> list = new LinkedList<>();
-			queue.add(root);
-			queue.add(null); // marks the start of a new level
-			List<Integer> levelList = new LinkedList<>();
-			boolean finishedAllLevels = false;
-			while (!queue.isEmpty()) {
-				if (queue.peek() == null) { // reached the end of level
-					queue.poll(); // remove the null marker
-					leftToRightInsertion = !leftToRightInsertion;
-					list.add(levelList);
-					levelList = new LinkedList<>();
-					if (queue.size() > 0) { // if there are more levels to be
-											// processed.
-						queue.add(null); // previous level ended. Thus, start a new
-											// level.
-					} else
-						finishedAllLevels = true;
-				}
-				if (!finishedAllLevels) {
-					TreeNode node = queue.poll();
-					// System.out.print(node.val + " ");
-					levelList.add(node.val);
-					// list.add(node.val);
-					if (leftToRightInsertion) {
-						if (node.left != null) {
-							queue.add(node.left);
-						}
-						if (node.right != null) {
-							queue.add(node.right);
-						}
-					} else {
-						if (node.right != null) {
-							queue.add(node.right);
-						}
-						if (node.left != null) {
-							queue.add(node.left);
-						}
-					}
-				}
-			}
 			return list;
-	
 		}
+
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		List<List<Integer>> list = new LinkedList<>();
+		queue.add(root);
+		queue.add(null); // marks the start of a new level
+		Stack<TreeNode> leftStack = new Stack<>(), rightStack = new Stack<>();
+		leftStack.push(root);
+		List<Integer> levelList = new LinkedList<>();
+		while (!leftStack.isEmpty() || !rightStack.isEmpty()) {
+			while (!leftStack.isEmpty()) {
+				TreeNode el = leftStack.pop();
+				if(el != null) levelList.add(el.val);
+				if(el.left != null) rightStack.push(el.left);
+				if(el.right != null) rightStack.push(el.right);
+			}
+			if(levelList!= null && levelList.size() > 0) list.add(levelList);
+			levelList = new LinkedList<>();
+			while (!rightStack.isEmpty()) {
+				TreeNode el = rightStack.pop();
+				if(el != null) levelList.add(el.val);
+				if(el.right != null) leftStack.push(el.right);
+				if(el.left != null) leftStack.push(el.left);
+			}
+			if(levelList!= null && levelList.size() > 0) list.add(levelList);
+			levelList = new LinkedList<>();
+		}
+		return list;
+
+	}
 
 	/**
 	 * @param args
