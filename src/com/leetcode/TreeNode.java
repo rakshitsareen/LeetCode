@@ -1,7 +1,7 @@
 package com.leetcode;
 
 class TreeNode {
-	int val;
+	Integer val;
 	TreeNode left;
 	TreeNode right;
 
