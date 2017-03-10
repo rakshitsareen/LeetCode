@@ -2,7 +2,7 @@ package com.leetcode;
 
 public class MinimumWindowSubstring {
 
-	private char[] patternTable = new char[256];
+	private char[] patternTable = new char[256];	//frequencies for characters in the pattern
 	private char[] count = new char[256]; // array for pattern seen till now.
 
 	public String minWindow(String s, String t) {
