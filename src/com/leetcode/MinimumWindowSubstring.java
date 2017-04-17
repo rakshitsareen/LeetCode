@@ -1,66 +1,53 @@
 package com.leetcode;
 
+import java.util.HashMap;
+
 public class MinimumWindowSubstring {
 
-	private char[] patternTable = new char[256];	//frequencies for characters in the pattern
-	private char[] count = new char[256]; // array for pattern seen till now.
-
 	public String minWindow(String s, String t) {
-		/*
-		 * s - source t - pattern to be found;
-		 */
-		int minLen = Integer.MAX_VALUE;
-		int len = 0;
-		int st = 0;
+		if (s == null || s.length() == 0 || t == null || t.length() == 0)
+			return "";
+
+		HashMap<Character, Integer> map = new HashMap<>();
+		HashMap<Character, Integer> dict = new HashMap<>();
+
+		// populate the dict with t's character , frequency
+		for (int i = 0; i < t.length(); i++) {
+			map.put(t.charAt(i), 0);
+			if (dict.containsKey(t.charAt(i)))
+				dict.put(t.charAt(i), dict.get(t.charAt(i)) + 1);
+			else
+				dict.put(t.charAt(i), 1);
+		}
+
 		int start = 0;
-		int tLen = t.length();
-		int sLen = s.length();
-		if (tLen > sLen) {
-			return new String("");
-		}
-		if (tLen == sLen && sLen == 1) {
-			if (s.charAt(0) == t.charAt(0)) {
-				return new String(s);
-			}
-			else 
-				return new String("");
-		}
-		for (int i = 0; i < tLen; i++) {
-			patternTable[t.charAt(i) - 'A']++; // counting all the frequencies
-												// in the pattern.
-		}
+		int minlength = s.length() + 1;
+		String result = "";
+		int count = 0;
 
-		for (int i = 0; i < sLen; i++) {
-			if (patternTable[s.charAt(i) - 'A'] > 0) {
-				if ((count[s.charAt(i) - 'A'] < patternTable[s.charAt(i) - 'A']) && len < tLen)
-					len++;
-				count[s.charAt(i) - 'A']++;
+		for (int end = 0; end < s.length(); end++) {
+			if (map.containsKey(s.charAt(end))) {
+				map.put(s.charAt(end), map.get(s.charAt(end)) + 1);
+				if (map.get(s.charAt(end)) <= dict.get(s.charAt(end)))
+					count++;
 			}
 
-			while (st < i && (patternTable[s.charAt(st) - 'A'] == 0
-					|| count[s.charAt(st) - 'A'] > patternTable[s.charAt(st) - 'A'])) {
-				count[s.charAt(st) - 'A']--;
-				st++;
-			}
-			if (tLen == len && i - st + 1 < minLen) {
-				minLen = i - st + 1;
-				start = st;
+			if (count == t.length()) {
+				while (!dict.containsKey(s.charAt(start)) || map.get(s.charAt(start)) > dict.get(s.charAt(start))) {
+					if (map.containsKey(s.charAt(start)))
+						map.put(s.charAt(start), map.get(s.charAt(start) + 1));
+					start++;
+				}
+				if (end - start + 1 > minlength) {
+					minlength = end - start + 1;
+					result = s.substring(start, end - start + 1);
+				}
 			}
 		}
-		System.out.println(start);
-		System.out.println(minLen);
-		String ans = s.substring(start, start + minLen);
-		if (len < tLen) {
-			return new String("");
-		}
-		return ans;
+		return result;
 	}
 
 	public static void main(String[] args) {
 
-		MinimumWindowSubstring sol = new MinimumWindowSubstring();
-		String S = "a";
-		String T = "b";
-		System.out.println(sol.minWindow(S, T));
 	}
 }

@@ -9,7 +9,7 @@ public class SlidingWindowMaximum {
 		if (nums == null || nums.length == 0)
 			return new int[0];
 		int[] result = new int[nums.length - k + 1];
-		Deque<Integer> dq = new ArrayDeque<>();
+		Deque<Integer> dq = new ArrayDeque<>();	// deque contains indices of the values
 		for (int i = 0; i < k; i++) {
 			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()])
 				dq.removeLast(); // removing indices where element is less than
@@ -37,3 +37,44 @@ public class SlidingWindowMaximum {
 		}
 	}
 }
+
+
+
+
+/*
+Buttercola Solution
+
+
+public class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k <= 0) {
+            return new int[0];
+        }
+         
+        Deque<Integer> deque = new LinkedList<Integer>();
+        int[] result = new int[nums.length - k + 1];
+         
+        for (int i = 0; i < nums.length; i++) {
+            while (!deque.isEmpty() && nums[i] >= nums[deque.getLast()]) {
+                deque.removeLast();
+            }
+             
+            deque.addLast(i);
+             
+            // Remove if the size of the deque is greater than k
+            if (i - deque.getFirst() + 1 > k) {
+                deque.removeFirst();
+            }
+             
+            // Add into the result
+            if (i + 1 >= k) {
+                result[i + 1 - k] = nums[deque.getFirst()];
+            }
+        }
+         
+        return result;
+    }
+}
+
+*
+*/
