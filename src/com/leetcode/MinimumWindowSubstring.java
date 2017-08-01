@@ -38,7 +38,7 @@ public class MinimumWindowSubstring {
 						map.put(s.charAt(start), map.get(s.charAt(start) + 1));
 					start++;
 				}
-				if (end - start + 1 > minlength) {
+				if (end - start + 1 < minlength) {
 					minlength = end - start + 1;
 					result = s.substring(start, end - start + 1);
 				}
