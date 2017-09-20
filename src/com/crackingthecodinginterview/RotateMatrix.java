@@ -62,12 +62,12 @@ public class RotateMatrix {
 			}
 			System.out.print("\n");
 		}
-		// for (int[] row : b) {
-		// for (int cha : row) {
-		// System.out.print(cha + " ");
-		// }
-		// System.out.print("\n");
-		// }
+		for (int[] row : b) {
+			for (int cha : row) {
+				System.out.print(cha + " ");
+			}
+			System.out.print("\n");
+		}
 	}
 
 }

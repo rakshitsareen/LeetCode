@@ -2,7 +2,7 @@ package com.crackingthecodinginterview;
 
 import java.util.LinkedList;
 
-class Graph {
+class GraphTemp {
 	public Node[] nodes;
 }
 
@@ -18,7 +18,7 @@ enum State {
 
 public class RouteBetweenNodes {
 
-	public boolean routeBetweenNodes(Graph g, Node startNode, Node destNode) {
+	public boolean routeBetweenNodes(GraphTemp g, Node startNode, Node destNode) {
 		// implement classic BFS
 		if (startNode == destNode)
 			return true;
@@ -52,7 +52,7 @@ public class RouteBetweenNodes {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Graph g = new Graph();
+		GraphTemp g = new GraphTemp();
 
 		Node node1 = new Node();
 		node1.name = 0;
