@@ -40,7 +40,7 @@ public class PermutationWithoutDups {
 
 	public static void main(String[] args) {
 		ArrayList<String> list = new ArrayList<>();
-		String s = new String("bcad");
+		String s = new String("xyz");
 		ArrayList<String> nList = PermutationWithoutDups.generatePermutationsWitDups(s, list);
 		for(String stemp : nList) {
 			System.out.println(stemp);
