@@ -6,7 +6,7 @@ public class PaintFill {
 		RED, GREEN, BLACK, WHITE, YELLOW
 	}
 
-	public static boolean paintFill(COLOR[][] screen, int r, int c, COLOR ocolor, COLOR ncolor) {
+	public static boolean paintFill(COLOR[][]screen, int r, int c, COLOR ocolor, COLOR ncolor) {
 		if (r < 0 || c < 0 || r >= screen.length || c >= screen[0].length)
 			return false;
 		if (screen[r][c] == ocolor) {
