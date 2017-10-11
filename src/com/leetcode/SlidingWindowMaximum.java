@@ -14,8 +14,9 @@ public class SlidingWindowMaximum {
 			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()])
 				dq.removeLast(); // removing indices where element is less than
 									// the integer being considered.
-			dq.add(i); // adding integral indices to the end
-		}
+			dq.add(i); // adding integral indices to the end, btw, this adds to the tail and not the head.
+		}	// till here we have an initial window setup, now we can proceed with the main 
+			// algorithm which is just the extension of what we did just now
 		for (int i = k; i < nums.length; i++) {
 			result[i - k] = nums[dq.getFirst()];
 			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()])	// remove all elements which are less than the el being considered.
