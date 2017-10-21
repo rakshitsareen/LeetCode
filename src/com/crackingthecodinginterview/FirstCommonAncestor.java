@@ -5,7 +5,7 @@ public class FirstCommonAncestor {
 	private TreeNode and;
 
 	public void firstCommonAncestor(TreeNode root, TreeNode a, TreeNode b) {
-		boolean bool = firstCommonAncestorUtil(root, a, b, and);
+		firstCommonAncestorUtil(root, a, b, and);
 		if (and != null) {
 			System.out.println(and);
 		}
@@ -21,21 +21,18 @@ public class FirstCommonAncestor {
 
 		if (left && right) {
 			and = root;
-			System.out.println("found it first");
+			// System.out.println("found it first");
 			return true;
 		}
 
 		if ((left || right) && (root == a || root == b)) {
 			and = root;
-			System.out.println("found it me too");
+			// System.out.println("found it me too");
 			return true;
 		}
 
-		if ((left && right) || (root == a || root == b))
+		if (root == a || root == b)
 			return true;
-
-		if ((root != a && root != b) && left && right)
-			return false;
 
 		if ((root != a && root != b) && (left || right))
 			return true;
