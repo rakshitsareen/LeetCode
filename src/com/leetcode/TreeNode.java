@@ -1,12 +1,12 @@
 package com.leetcode;
 
-class TreeNode {
-	Integer val;
-	TreeNode left;
-	TreeNode right;
+public class TreeNode {
+	public Integer val;
+	public TreeNode left;
+	public TreeNode right;
 
-	TreeNode(int x) {
-		val = x;
+	public TreeNode(int x) {
+		this.val = x;
 	}
 
 	public TreeNode insertLeft(TreeNode node) {
