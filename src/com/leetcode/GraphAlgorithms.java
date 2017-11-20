@@ -1,6 +1,29 @@
 package com.leetcode;
 
+import com.leetcode.Graph.Edge;
+
 public class GraphAlgorithms {
+
+	class Graph {
+
+		public int V, E;
+		Edge edge[];
+
+		class Edge {
+			int src, dest;
+		};
+
+		public Graph(int v, int e) {
+			this.V = v;
+			this.E = e;
+			edge = new Edge[E];
+			for (int i = 0; i < e; i++) {
+				edge[i] = new Edge();
+			}
+		}
+	}
+
+	Graph graph = new Graph(3, 3);
 
 	static int find(int parent[], int i) {
 		if (parent[i] == -1)
@@ -30,22 +53,21 @@ public class GraphAlgorithms {
 	}
 
 	public static void main(String[] args) {
-		int V = 3, E = 3;
-		Graph graph = new Graph(V, E);
-
+		GraphAlgorithms g = new GraphAlgorithms();
+		
 		// add edge 0-1
-		graph.edge[0].src = 0;
-		graph.edge[0].dest = 1;
+		g.graph.edge[0].src = 0;
+		g.graph.edge[0].dest = 1;
 
 		// add edge 1-2
-		graph.edge[1].src = 1;
-		graph.edge[1].dest = 2;
+		g.graph.edge[1].src = 1;
+		g.graph.edge[1].dest = 2;
 
 		// add edge 0-2
-		graph.edge[2].src = 0;
-		graph.edge[2].dest = 2;
+		g.graph.edge[2].src = 0;
+		g.graph.edge[2].dest = 2;
 
-		if (isCycle(graph))
+		if (isCycle(g.graph))
 			System.out.println("Graph contains cycle");
 		else
 			System.out.println("Cycle free graph");
