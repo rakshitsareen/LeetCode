@@ -5,45 +5,47 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-class Graph {
-	private int v; // no of vertices
+import com.leetcode.Graph.Edge;
 
-	public int getV() {
-		return v;
-	}
+public class BFS {
+	
+	class Graph {
+		private int v; // no of vertices
 
-	public void setV(int v) {
-		this.v = v;
-	}
+		public int getV() {
+			return v;
+		}
 
-	private List<Integer>[] adj; // Adjacency lists.
+		public void setV(int v) {
+			this.v = v;
+		}
 
-	public List<Integer>[] getAdj() {
-		return adj;
-	}
+		private List<Integer>[] adj; // Adjacency lists.
 
-	public void setAdj(List<Integer>[] adj) {
-		this.adj = adj;
-	}
+		public List<Integer>[] getAdj() {
+			return adj;
+		}
 
-	@SuppressWarnings("unchecked")
-	Graph(int v) {
-		this.v = v;
-		adj = new LinkedList[v];
-		for (int i = 0; i < v; i++) {
-			adj[i] = new LinkedList<>();
+		public void setAdj(List<Integer>[] adj) {
+			this.adj = adj;
+		}
+
+		@SuppressWarnings("unchecked")
+		Graph(int v) {
+			this.v = v;
+			adj = new LinkedList[v];
+			for (int i = 0; i < v; i++) {
+				adj[i] = new LinkedList<>();
+			}
+		}
+
+		public void addEdge(int v, int w) {
+			if (adj[v] != null)
+				adj[v].add(w);
 		}
 	}
 
-	public void addEdge(int v, int w) {
-		if (adj[v] != null)
-			adj[v].add(w);
-	}
-}
-
-public class BFS {
-
-	private Graph graph;
+	private Graph graph = new Graph(4);
 	private List<Integer>[] adj;
 
 	public void breadthFirstTraversal(Graph graph, int source) {
@@ -75,16 +77,16 @@ public class BFS {
 	}
 
 	public static void main(String[] args) {
-		Graph g = new Graph(4);
 
-		g.addEdge(0, 1);
-		g.addEdge(0, 2);
-		g.addEdge(1, 2);
-		g.addEdge(2, 0);
-		g.addEdge(2, 3);
-		g.addEdge(3, 3);
+		
 		//g.addEdge(3, 1);
 		BFS sol = new BFS();
-		sol.breadthFirstTraversal(g, 3);
+		sol.graph.addEdge(0, 1);
+		sol.graph.addEdge(0, 2);
+		sol.graph.addEdge(1, 2);
+		sol.graph.addEdge(2, 0);
+		sol.graph.addEdge(2, 3);
+		sol.graph.addEdge(3, 3);
+		sol.breadthFirstTraversal(sol.graph, 3);
 	}
 }
