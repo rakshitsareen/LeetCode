@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import com.leetcode.Graph.Edge;
-
 public class GraphAlgorithms {
 
 	class Graph {
