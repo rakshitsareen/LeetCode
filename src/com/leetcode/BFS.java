@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import com.leetcode.Graph.Edge;
 
 public class BFS {
 	
