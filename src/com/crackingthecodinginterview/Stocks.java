@@ -64,7 +64,7 @@ public class Stocks {
 			8942, 8941, 8940, 8939, 8938, 8937, 8936, 8935, 8934, 8933, 8932, 8931, 8930, 8929, 8928, 8927, 8926, 8925,
 			8924, 8923, 8922, 8921, 8920, 8919, 8918, 8917, 8916, 8915, 8914, 8913, 8912, 8911, 8910, 8909, 8908, 8907,
 			8906, 8905, 8904, 8903, 8902, 8901, 8900, 8899, 8898, 8897, 8896, 8895, 8894, 8893, 8892, 8891, 8890,
-			8889 };
+			10001 };
 
 	public int solWithOneTransaction(int[] nums) {
 		if (nums == null || nums.length == 0)
@@ -117,6 +117,29 @@ public class Stocks {
 		return max;
 	}
 
+	public int solutionWithTwoTransactions(int[] price) {
+		int n = price.length;
+		int[] profit = new int[n];
+		int max = price[n - 1];
+		int min = price[0];
+		for (int i = 0; i < n; i++) {
+			profit[i] = 0;
+		}
+		for (int i = n - 2; i >= 0; i--) {
+			if (price[i] > max)
+				max = price[i];
+			profit[i] = Math.max(profit[i + 1], max - price[i]);
+		}
+
+		for (int i = 1; i < n; i++) {
+			if (price[i] < min)
+				min = price[i];
+			profit[i] = Math.max(profit[i - 1], profit[i] + (price[i] - min));
+		}
+
+		return profit[n - 1];
+	}
+
 	public int solWithManyNonOverlappingTransactions(int[] nums) {
 		int profit = 0;
 		for (int i = 1; i < nums.length; i++) {
@@ -130,7 +153,9 @@ public class Stocks {
 		Stocks sol = new Stocks();
 		// System.out.println(sol.solWithOneTransaction(sprice));
 		// System.out.println(sol.solWithManyNonOverlappingTransactions(sprice));
-		System.out.println(sol.solWithAtMostKTransactions(sprice, 2));
+		// System.out.println(sol.solWithAtMostKTransactions(sprice, 2));
+		int price[] = { 2, 30, 15, 10, 8, 25, 80 };
+		System.out.println(sol.solutionWithTwoTransactions(price));
 	}
 
 }
