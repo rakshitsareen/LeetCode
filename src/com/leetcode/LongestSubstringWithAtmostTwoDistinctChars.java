@@ -14,9 +14,14 @@ public class LongestSubstringWithAtmostTwoDistinctChars {
 		int numDistinct = 0;
 		for (end = 0; end < s.length(); end++) {
 			char c = s.charAt(end);
+			/*
+			 * here you might be adding new elements in the window, so remove previous ones
+			 * from the window and shrink the window
+			 */
 			if (map.get(c) == null) {
 				map.put(c, 1);
 				numDistinct++;
+				// now shrink window if start does not crosses end and till numDistint doesn't come to 2
 				while (start < end && numDistinct > 2) {
 					if (map.get(s.charAt(start)) == 1)
 						map.remove(s.charAt(start));
@@ -31,7 +36,7 @@ public class LongestSubstringWithAtmostTwoDistinctChars {
 																		// the
 																		// frequency
 			}
-			Math.max(len, end - start + 1);
+			len = Math.max(len, end - start + 1);
 		}
 		return len;
 
