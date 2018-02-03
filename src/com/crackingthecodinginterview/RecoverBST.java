@@ -6,7 +6,7 @@ public class RecoverBST {
 	public void correctBSTUtil(TreeNode root) {
 		if (root == null)
 			return;
-		correctBST(root.left);
+		correctBSTUtil(root.left);
 		if (prev != null && root.value < prev.value)
 			if (first == null) {
 				first = prev;
@@ -15,7 +15,7 @@ public class RecoverBST {
 				last = root;
 			}
 		prev = root;
-		correctBST(root.right);
+		correctBSTUtil(root.right);
 	}
 
 	public void correctBST(TreeNode root) {
