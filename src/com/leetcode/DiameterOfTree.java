@@ -16,6 +16,8 @@ public class DiameterOfTree {
 
 		int ldiameter = diameter(root.left);
 		int rdiameter = diameter(root.right);
+		// return the maximum of left + right height, or any other if encountered 
+		// from the subproblem
 		return Math.max(rheight + lheight + 1, Math.max(ldiameter, rdiameter));
 	}
 
