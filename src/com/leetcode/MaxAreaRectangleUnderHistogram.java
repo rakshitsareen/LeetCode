@@ -5,6 +5,7 @@ import java.util.Stack;
 public class MaxAreaRectangleUnderHistogram {
 
 	public static int largestRectangleArea(int[] heights) {
+		// this stack will contain the indices of the histogram
 		Stack<Integer> s = new Stack<Integer>();
 		int i = 0;
 		int tp = 0;
