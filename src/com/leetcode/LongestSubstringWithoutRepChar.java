@@ -20,21 +20,21 @@ public class LongestSubstringWithoutRepChar {
 				while (start < end) {
 					if (s.charAt(end) != s.charAt(start)) {
 						set.remove(s.charAt(start));
+						start++;
 					} else {
 						break;
 					}
-					start++;
 				}
 				start++;
 			}
 		}
 		maxLen = Math.max(maxLen, end - start);
-		return end;
+		return maxLen;
 	}
 
 	public static void main(String[] args) {
 		
 		LongestSubstringWithoutRepChar sol = new LongestSubstringWithoutRepChar();
-		
+		System.out.println(sol.lengthOfLongestSubstring("abcabcbb"));
 	}
 }
