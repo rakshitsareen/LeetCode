@@ -17,6 +17,8 @@ public class MaximumProductSubarray {
 			// or continue with the old one.
 			imax = Math.max(nums[i], imax * nums[i]);
 			imin = Math.min(nums[i], imin * nums[i]);
+			
+			// now check this new max with the newly calculated max
 			r = Math.max(imax, r);
 		}
 		return r;
