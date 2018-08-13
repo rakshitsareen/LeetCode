@@ -2,48 +2,32 @@ package com.leetcode;
 
 public class MaximumProductSubarray {
 
-	public int maxProduct(int nums[]) {
-		if (nums != null && nums.length == 1) {
-			return nums[0];
-		}l
-		boolean allzeros = true;
-		// check if all are zeros, then return 0
-		for (int k = 0; k < nums.length; k++) {
-			if (nums[k] != 0)
-				allzeros = false;
-		}
-		if (allzeros) {
-			return 0;
-		}
-		int maxendinghere = 1;
-		int minendinghere = 1;
-		int maxsofar = 1;
-		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] > 0) {
-				maxendinghere = maxendinghere * nums[i];
-				minendinghere = Math.min(minendinghere * nums[i], 1);
-			} else if (nums[i] == 0) {
-				maxendinghere = 1;
-				minendinghere = 1;
-			} else {
-				int temp = maxendinghere;
-				maxendinghere = Math.max(minendinghere * nums[i], 1);
-				minendinghere = temp * nums[i];
-			}
+	public int maxProduct2(int[] nums, int n) {
+		int r = nums[0];
 
-			if (maxsofar < maxendinghere) {
-				maxsofar = maxendinghere;
+		for (int i = 1, imax = r, imin = r; i < n; i++) {
+			// we swap this because if we multiply with a negative number
+			// min becomes max, max becomes min, so swap
+			if (nums[i] < 0) {
+				int temp = imin;
+				imin = imax;
+				imax = temp;
 			}
-		}
+			// here we figure out whether we need to start a new maxproduct
+			// or continue with the old one.
+			imax = Math.max(nums[i], imax * nums[i]);
+			imin = Math.min(nums[i], imin * nums[i]);
 
-		return maxsofar;
+			// now check this new max with the newly calculated max
+			r = Math.max(imax, r);
+		}
+		return r;
 	}
 
 	public static void main(String[] args) {
 		MaximumProductSubarray obj = new MaximumProductSubarray();
 		// int[] arr = { -4, 0, 1, 2, 3, 4, 5, -10, 3, 2, 5, 0, 0, 0 };
-		int[] arr = { -2, 0, -1 };
-		// int[] arr = { 2, 3, -2, 4 };
-		System.out.println(obj.maxProduct(arr));
+		int[] prr = { -2, 0, -1 };
+		System.out.println(obj.maxProduct2(prr, prr.length));
 	}
 }
