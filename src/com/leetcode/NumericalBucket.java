@@ -3,6 +3,9 @@ package com.leetcode;
 public class NumericalBucket {
 
 	public static int calculateAmountOfWater(int[] arr) {
+		if (arr == null || arr.length == 1 || arr.length == 0) {
+			return 0;
+		}
 		int output = 0;
 		int[] maxFromLeft = new int[arr.length], maxFromRight = new int[arr.length];
 		maxFromLeft[0] = arr[0];
