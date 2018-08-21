@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LongestConsecutiveSequence {
-
+// TODO : Do hashmap and union find solution.
 	public static int longestConsecutive(int[] nums) {
 		if (nums == null || nums.length == 0)
 			return 0;
