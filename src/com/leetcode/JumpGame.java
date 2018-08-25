@@ -39,10 +39,18 @@ public class JumpGame {
 		return canJumpUtil(nums, 0, len - 1);
 	}
 
+	public boolean canJump2(int[] nums) {
+		int i = 0;
+		for (int reach = 0; i < nums.length && i <= reach; i++) {
+			reach = Math.max(i + nums[i], reach);
+		}
+		return i == nums.length;
+	}
+
 	public static void main(String[] args) {
 		int[] nums = { 2, 3, 1, 1, 4 };
 		JumpGame sol = new JumpGame();
-		System.out.println(sol.canJump(nums));
+		System.out.println(sol.canJump2(nums));
 	}
 
 }
