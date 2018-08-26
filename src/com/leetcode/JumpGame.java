@@ -6,8 +6,8 @@ public class JumpGame {
 	public boolean canJumpUtil(int[] nums, int start, int end) {
 		if (start == end)
 			return true;
-		if (start > end)
-			return false;
+		// if (start > end)
+		// return false;
 		for (int jump = nums[start]; jump > 0; jump--) {
 			// check if this jump can do it.
 			if (canJumpUtil(nums, start + jump, end))
@@ -50,7 +50,7 @@ public class JumpGame {
 	public static void main(String[] args) {
 		int[] nums = { 2, 3, 1, 1, 4 };
 		JumpGame sol = new JumpGame();
-		System.out.println(sol.canJump2(nums));
+		System.out.println(sol.canJump(nums));
 	}
 
 }
