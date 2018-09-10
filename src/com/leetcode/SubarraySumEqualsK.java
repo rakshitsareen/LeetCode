@@ -1,4 +1,5 @@
 package com.leetcode;
+
 /*
  * Algorithm
 
@@ -31,6 +32,7 @@ public class SubarraySumEqualsK {
 	public static int subarraySum(int[] nums, int k) {
 		int result = 0;
 		Map<Integer, Integer> presum = new HashMap<>();
+		// sum 0 has occurred one time
 		presum.put(0, 1);
 		int sum = 0;
 		for (int i = 0; i < nums.length; i++) {
