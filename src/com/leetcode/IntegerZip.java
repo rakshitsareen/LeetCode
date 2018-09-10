@@ -8,6 +8,12 @@ public class IntegerZip {
 		Stack<Integer> one = new Stack<Integer>();
 		Stack<Integer> two = new Stack<Integer>();
 		int temp = 0;
+		if (a == 0 && b != 0) {
+			one.push(0);
+		}
+		if (b == 0 && a != 0) {
+			two.push(0);
+		}
 		while (a > 0) {
 			temp = a % 10;
 			a = a / 10;
