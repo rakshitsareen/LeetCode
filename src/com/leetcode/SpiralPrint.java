@@ -3,7 +3,7 @@ package com.leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SPiralPrint {
+public class SpiralPrint {
 
 	public static List<Integer> spiralPrint(int rows, int cols, int[][] a) {
 		List<Integer> ans = new ArrayList<>();
