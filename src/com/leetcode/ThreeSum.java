@@ -16,9 +16,9 @@ public class ThreeSum {
 	public static List<List<Integer>> threeSum(int[] nums) {
 		Arrays.sort(nums); // takes nlog(n) time
 		List<List<Integer>> ans = new LinkedList<>();
-		// below cod take O(n^2) time
+		// below code take O(n^2) time
 		for (int i = 0; i < nums.length - 2; i++) {
-			// this `if` ensures that we have found a solution for this `nums[i]` which was 
+			// this `if` ensures that we have found a solution for this `nums[i]` which was
 			// equal to nums[i-1], so that solutions are not repeated
 			if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
 				int minus_a = 0 - nums[i];
