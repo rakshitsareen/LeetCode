@@ -10,7 +10,7 @@ public class LongestConsecutiveSequence {
 			return 0;
 		if (nums.length == 1)
 			return 1;
-		int mstreak = 0;
+		int mstreak = 0;	// max streak
 		int n = nums.length;
 		Set<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < nums.length; i++) {
@@ -18,11 +18,11 @@ public class LongestConsecutiveSequence {
 		}
 		for (int i = 0; i < n; i++) {
 			int y = 0, streak = 0;
-			// check if nums[i] - 1 is also in set, then claculate
+			// check if nums[i] - 1 is also in set, then calculate
 			// the streak ( if yes )
 			if (!set.contains(nums[i] - 1)) {
 				// then it is the start of a streak.
-				y = nums[i]; // save the srart of streak
+				y = nums[i]; // save the start of streak
 				while (set.contains(++y)) {
 					streak++;
 				}
