@@ -58,7 +58,7 @@ public class MergeKsortedLists {
 					finalList.next = minNode;
 					finalList = finalList.next;
 				}
-				minNode = minNode.next; // update
+				minNode = minNode.next; // update the list whose head we have just extracted
 				if (minNode != null) {
 					pqueue.add(minNode); // add the next node in the heap.
 				}
