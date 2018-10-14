@@ -9,6 +9,7 @@ import java.util.List;
 public class ItrUseCase {
 
 	private List<Integer> mlist = null;
+	Integer[] a = null;
 
 	public void addAll() {
 		mlist = new ArrayList<>();
