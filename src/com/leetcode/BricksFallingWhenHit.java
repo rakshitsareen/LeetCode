@@ -1,8 +1,5 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BricksFallingWhenHit {
 	int[][] g = null;
 	int id = 0;
