@@ -3,7 +3,7 @@ package com.leetcode;
 import java.util.TreeSet;
 
 public class MaximizeDistancetoClosestPerson {
-
+	// TODO : write solution without treeset
 	public static int maxDistToClosest(int[] seats) {
 		int mlen = 0;
 		int last_one = 0;
