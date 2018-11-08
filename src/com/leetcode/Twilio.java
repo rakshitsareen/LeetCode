@@ -34,7 +34,7 @@ public class Twilio {
 			if (!map.containsKey(host)) {
 				map.put(host, 1);
 			}
-			if (map.containsKey(host)) {
+			else if (map.containsKey(host)) {
 				Integer c = map.get(host);
 				map.put(host, c + 1);
 			}
