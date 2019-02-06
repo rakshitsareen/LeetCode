@@ -56,7 +56,7 @@ public class LongestPalindromicSubstring {
 	}
 
 	public static void main(String[] args) {
-		String s = "ccc";
+		String s = "xyxabcdcba";
 		System.out.println(longestPalindrome(s));
 	}
 }
