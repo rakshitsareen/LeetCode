@@ -2,11 +2,37 @@ package com.leetcode;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class MeetingRooms {
 
 	public static int minMeetingRooms(Interval[] intervals) {
-		return 0;
+		if (intervals == null)
+			return 0;
+		if (intervals.length == 0)
+			return 0;
+		Arrays.sort(intervals, new Comparator<Interval>() {
+			@Override
+			public int compare(Interval o1, Interval o2) {
+				return o1.start - o2.start;
+			}
+		});
+		PriorityQueue<Interval> heap = new PriorityQueue<>(new Comparator<Interval>() {
+			@Override
+			public int compare(Interval o1, Interval o2) {
+				return o1.end - o2.end;
+			}
+		});
+		heap.offer(intervals[0]);
+		for (int i = 1; i < intervals.length; i++) {
+			Interval poll = heap.poll();
+			if (poll.end <= intervals[i].start) {
+				poll.end = intervals[i].end;
+			} else
+				heap.offer(intervals[i]);
+			heap.offer(poll);
+		}
+		return heap.size();
 	}
 
 	public static boolean canAttendMeetings(Interval[] intervals) {
@@ -33,7 +59,7 @@ public class MeetingRooms {
 			}
 
 		});
-		System.out.println(Arrays.asList(intervals));
+		// System.out.println(Arrays.asList(intervals));
 		for (int i = 0; i < intervals.length - 1; i++) {
 			if (!(intervals[i].end <= intervals[i + 1].start))
 				return false;
