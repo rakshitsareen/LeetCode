@@ -8,7 +8,7 @@ import java.util.TreeMap;
 class TwitterPair {
 	private String engangementData;
 	private Integer engagementCount;
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,7 +45,7 @@ class TwitterPair {
 		return true;
 	}
 
-	public TwitterPair(String engangementData, Integer engagementCount ) {
+	public TwitterPair(String engangementData, Integer engagementCount) {
 		this.engangementData = engangementData;
 		this.engagementCount = engagementCount;
 	}
@@ -100,22 +100,22 @@ public class TwitterTimeSeries {
 	}
 
 	public static void processAndAddIntoRegistry(String engagement) {
-		StringTokenizer st = new StringTokenizer(engagement,",");
+		StringTokenizer st = new StringTokenizer(engagement, ",");
 		String engagementType = null;
 		String engagementCount = null;
-		while(st.hasMoreTokens()) {
+		while (st.hasMoreTokens()) {
 			String date = st.nextToken().trim();
-			if(st.hasMoreTokens())
+			if (st.hasMoreTokens())
 				engagementType = st.nextToken().trim();
-			if(st.hasMoreTokens())
+			if (st.hasMoreTokens())
 				engagementCount = st.nextToken().trim();
 			TwitterPair pair = new TwitterPair(engagementType, Integer.parseInt(engagementCount));
-			addToRegistry(date,pair);
+			addToRegistry(date, pair);
 		}
 	}
-	
+
 	public static void addToRegistry(String date, TwitterPair pair) {
-		
+
 	}
 
 	public static String inputSingleEngagement() {
