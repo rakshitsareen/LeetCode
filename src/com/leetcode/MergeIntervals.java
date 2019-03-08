@@ -54,9 +54,7 @@ public class MergeIntervals {
 		intervals.add(new Interval(2, 6));
 		intervals.add(new Interval(15, 18));
 		List<Interval> result = MergeIntervals.merge(intervals);
-		for (Interval in : result) {
-			System.out.println(in);
-		}
+		System.out.println(result);
 	}
 
 }
