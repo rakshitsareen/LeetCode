@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class MinimumWindowSubstring {
 	
-	public String minWindowCorrect(String s, String t) {
+	public String minWindow(String s, String t) {
 		if (s == null || s.length() == 0 || t == null || t.length() == 0)
 			return "";
 		int begin = 0, end = 0;
