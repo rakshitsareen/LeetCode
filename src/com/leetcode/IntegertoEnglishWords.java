@@ -20,7 +20,7 @@ public class IntegertoEnglishWords {
 			num /= 1000;
 			i++;
 		}
-		return words;
+		return words.trim();
 	}
 
 	public String helper(int num) {
