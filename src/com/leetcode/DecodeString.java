@@ -36,8 +36,7 @@ public class DecodeString {
 	}
 
 	public static void main(String[] args) {
-		String s = "3[a]2[bc]6[wwe]";
+		String s = "3[a]2[bc]6[d]";
 		System.out.println(new DecodeString().wrong_decodeString_wrong(s));
 	}
-
 }
