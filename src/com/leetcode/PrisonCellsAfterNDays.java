@@ -7,7 +7,7 @@ public class PrisonCellsAfterNDays {
 	public static int[] prisonAfterNDays(int[] cells, int N) {
 		int[] first_copy = new int[cells.length];
 		int[] workingCopy = new int[cells.length];
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; N-- > 0; i++) {
 			for (int j = 1; j < cells.length - 1; j++)
 				workingCopy[j] = cells[j - 1] == cells[j + 1] ? 1 : 0;
 			if (0 == i)
