@@ -36,59 +36,57 @@ O(logn)
  */
 
 class SolutionTapad {
-  
-  public static int missingNumber(int [] nums){
-    if(nums == null) return -1;
-    int n = nums.length;
-    //finding sum of first n numbers
-    int sum = ((n+2)*(n+1))/2;
-    
-    int sumArr = 0;
-    for(int i = 0;i<n;i++){
-      sumArr += nums[i];
-    }
-    
-    
-    return sum - sumArr;
-    
-  }
-  
-  public static int missingNumberSorted(int [] A,int start, int end) {
-    int n = A.length;
-    int mid = (start+end)/2;
-    if(A[mid] == mid+1) {  // right spot, recurse right
-      if(A[mid] - A[mid-1] > 1) 
-        return A[mid] - 1;
-      else if(A[mid+1] - A[mid] > 1)  
-        return A[mid] + 1;
-      else
-        return missingNumberSorted(A,mid+1,end);
-    }
-    
-    else {  // recurse left
-      if(A[mid] - A[mid-1] > 1) 
-        return A[mid] - 1;
-      else if(A[mid+1] - A[mid] > 1)  
-        return A[mid] + 1;
-      else {
-        return missingNumberSorted(A,start,mid-1);
-      }
-    }
-  }
-  
-  public static void main(String[] args) {
-    /*ArrayList<String> strings = new ArrayList<String>();
-    strings.add("Hello, World!");
-    strings.add("Welcome to CoderPad.");
-    strings.add("This pad is running Java 8.");
 
-    for (String string : strings) {
-      System.out.println(string);
-    }*/
-    int[] nums = {1, 2, 4, 5};
-    int number = missingNumberSorted(nums,0,nums.length);
-    System.out.println(number);
-    
-    
-  }
+	public static int missingNumber(int[] nums) {
+		if (nums == null)
+			return -1;
+		int n = nums.length;
+		// finding sum of first n numbers
+		int sum = ((n + 2) * (n + 1)) / 2;
+
+		int sumArr = 0;
+		for (int i = 0; i < n; i++) {
+			sumArr += nums[i];
+		}
+
+		return sum - sumArr;
+
+	}
+
+	public static int missingNumberSorted(int[] A, int start, int end) {
+		int n = A.length;
+		int mid = (start + end) / 2;
+		if (A[mid] == mid + 1) { // right spot, recurse right
+			if (A[mid] - A[mid - 1] > 1)
+				return A[mid] - 1;
+			else if (A[mid + 1] - A[mid] > 1)
+				return A[mid] + 1;
+			else
+				return missingNumberSorted(A, mid + 1, end);
+		}
+
+		else { // recurse left
+			if (A[mid] - A[mid - 1] > 1)
+				return A[mid] - 1;
+			else if (A[mid + 1] - A[mid] > 1)
+				return A[mid] + 1;
+			else {
+				return missingNumberSorted(A, start, mid - 1);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		/*
+		 * ArrayList<String> strings = new ArrayList<String>();
+		 * strings.add("Hello, World!"); strings.add("Welcome to CoderPad.");
+		 * strings.add("This pad is running Java 8.");
+		 * 
+		 * for (String string : strings) { System.out.println(string); }
+		 */
+		int[] nums = { 1, 2, 4, 5 };
+		int number = missingNumberSorted(nums, 0, nums.length);
+		System.out.println(number);
+
+	}
 }
