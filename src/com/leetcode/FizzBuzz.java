@@ -24,7 +24,7 @@ public class FizzBuzz {
 	}
 
 	public static void main(String[] args) {
-		solution(30);
+		solution(24);
 	}
 
 }
