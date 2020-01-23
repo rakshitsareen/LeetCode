@@ -3,44 +3,38 @@ package com.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-class RandomListNode {
-	int label;
-	RandomListNode next, random;
+class _Node {
+	int val;
+	_Node next, random;
 
-	RandomListNode(int x) {
-		this.label = x;
+	_Node(int x) {
+		this.val = x;
 	}
 };
 
 public class CopyListWithRandomPointer {
 
-	public RandomListNode copyRandomList(RandomListNode head) {
-		if (head == null)
+	public _Node copyRandomList(_Node head) {
+		if (null == head)
 			return null;
-		RandomListNode save = head;
-		Map<RandomListNode, RandomListNode> map = new HashMap<>();
-		RandomListNode x = new RandomListNode(head.label);
-		map.put(head, x);
-		RandomListNode save_x = x;
-		while (head.next != null) {
-			x.next = new RandomListNode(head.next.label);
-			map.put(head.next, x.next);
-			x = x.next;
-			head = head.next;
+		Map<_Node, _Node> map = new HashMap<_Node, _Node>();
+		_Node temp = head;
+		_Node newNode = null;
+		while (temp != null) {
+			newNode = new _Node(temp.val);
+			map.put(temp, newNode);
+			temp = temp.next;
 		}
-		head = save;
-		x = save_x;
-		while (head != null) {
-			x.random = map.get(head.random);
-			head = head.next;
-			x = x.next;
+		temp = head;
+		while (temp != null) {
+			map.get(temp).next = map.get(temp.next);
+			map.get(temp).random = map.get(temp.random);
+			temp = temp.next;
 		}
-		return save_x;
+		return map.getOrDefault(head, null);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
-
 }
