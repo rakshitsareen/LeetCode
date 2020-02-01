@@ -9,36 +9,39 @@ public class MergeTwoSortedLists {
 			return l2;
 		if (l2 == null)
 			return l1;
+		
 		ListNode sentinel = new ListNode(0);
 		ListNode result = sentinel;
-		while (l1 != null && l2 != null) {
-			if (l1.val < l2.val) {
+		
+		while (l1 != null || l2 != null) {
+			if (l1 != null && l2 != null) {
+				if (l1.val < l2.val) {
+					sentinel.next = l1;
+					sentinel = sentinel.next;
+					l1 = l1.next;
+				} else if (l2.val < l1.val) {
+					sentinel.next = l2;
+					sentinel = sentinel.next;
+					l2 = l2.next;
+				} else {
+					sentinel.next = l1;
+					sentinel = sentinel.next;
+					l1 = l1.next;
+					sentinel.next = l2;
+					sentinel = sentinel.next;
+					l2 = l2.next;
+				}
+			}
+			else if (l2 == null) {
 				sentinel.next = l1;
 				sentinel = sentinel.next;
 				l1 = l1.next;
 			}
-			else if (l2.val < l1.val) {
-				sentinel.next = l2;
-				sentinel = sentinel.next;
-				l2 = l2.next;
-			} else {
-				sentinel.next = l1;
-				sentinel = sentinel.next;
-				l1 = l1.next;
+			else if (l1 == null) {
 				sentinel.next = l2;
 				sentinel = sentinel.next;
 				l2 = l2.next;
 			}
-		}
-		while (l1 != null) {
-			sentinel.next = l1;
-			sentinel = sentinel.next;
-			l1 = l1.next;
-		}
-		while (l2 != null) {
-			sentinel.next = l2;
-			sentinel = sentinel.next;
-			l2 = l2.next;
 		}
 		return result.next;
 	}
@@ -47,5 +50,4 @@ public class MergeTwoSortedLists {
 		// TODO Auto-generated method stub
 
 	}
-
 }
