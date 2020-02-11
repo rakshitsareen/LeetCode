@@ -6,31 +6,19 @@ import java.util.PriorityQueue;
 
 public class MeetingRooms {
 
-	public static int minMeetingRooms(Interval[] intervals) {
-		if (intervals == null)
+	public int minMeetingRooms(int[][] intervals) {
+		if (null == intervals || intervals.length == 0)
 			return 0;
-		if (intervals.length == 0)
-			return 0;
-		Arrays.sort(intervals, new Comparator<Interval>() {
-			@Override
-			public int compare(Interval o1, Interval o2) {
-				return o1.start - o2.start;
-			}
-		});
-		PriorityQueue<Interval> heap = new PriorityQueue<>(new Comparator<Interval>() {
-			@Override
-			public int compare(Interval o1, Interval o2) {
-				return o1.end - o2.end;
-			}
-		});
+		Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+		PriorityQueue<int[]> heap = new PriorityQueue<int[]>(intervals.length, (a, b) -> a[1] - b[1]);
 		heap.offer(intervals[0]);
-		for (int i = 1; i < intervals.length; i++) {
-			Interval poll = heap.poll();
-			if (poll.end <= intervals[i].start) {
-				poll.end = intervals[i].end;
-			} else
+		for (int i = 1; i < intervals.length; ++i) {
+			int[] curr = heap.poll();
+			if (intervals[i][0] < curr[1])
 				heap.offer(intervals[i]);
-			heap.offer(poll);
+			else
+				curr[1] = intervals[i][1];
+			heap.offer(curr);
 		}
 		return heap.size();
 	}
