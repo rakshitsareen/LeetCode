@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -81,7 +82,7 @@ public class SortCharactersByFrequency {
 		}
 		Iterator<Map.Entry<Character, Integer>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry<Character, Integer> pair = (Map.Entry<Character, Integer>) it.next();
+			Map.Entry<Character, Integer> pair = it.next();
 			set.add(new Pair(pair.getKey(), pair.getValue()));
 		}
 		return buildString(set);
@@ -99,6 +100,33 @@ public class SortCharactersByFrequency {
 	public static void main(String[] args) {
 		String s = "tree";
 		System.out.println(new SortCharactersByFrequency().frequencySort(s));
+	}
+
+	public String frequencySort2(String s) {
+		StringBuilder sb = new StringBuilder();
+		Map<Character, Integer> f = new HashMap<Character, Integer>();
+
+		for (char c : s.toCharArray()) {
+			f.put(c, f.getOrDefault(c, 0) + 1);
+		}
+
+		ArrayList<Character>[] b = new ArrayList[s.length() + 1];
+		for (char c : f.keySet()) {
+			int fr = f.get(c);
+			if (b[fr] == null)
+				b[fr] = new ArrayList<Character>();
+			b[fr].add(c);
+		}
+		for (int pos = b.length - 1; pos >= 0; pos--) {
+			if (b[pos] != null) {
+				for (char c : b[pos]) {
+					for (int i = 0; i < f.get(c); ++i)
+						sb.append(c);
+				}
+			}
+		}
+
+		return sb.toString();
 	}
 
 }
