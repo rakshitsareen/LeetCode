@@ -1,9 +1,12 @@
 package com.leetcode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+
+import org.w3c.dom.Node;
 
 public class ZigZagTraversal {
 
@@ -42,6 +45,29 @@ public class ZigZagTraversal {
 		}
 		return list;
 
+	}
+	
+	public List<List<Integer>> zigzagLevelOrder_another_way(TreeNode root) {
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
+		if(root == null) return res;
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		boolean iseven = true;
+		q.offer(root);
+		while(!q.isEmpty()) {
+			int size = q.size();
+			LinkedList<Integer> temp = new LinkedList<Integer>();
+			for(int i = 0; i < size; ++i) {
+				TreeNode n = q.poll();
+				if(n.left != null) q.offer(n.left);
+				if(n.right != null) q.offer(n.right);
+				if(iseven) temp.add(n.val);
+				else temp.addFirst(n.val);
+			}
+			res.add(temp);
+			temp = new LinkedList<Integer>();
+			iseven = !iseven;
+		}
+		return res;
 	}
 
 	/**
