@@ -8,7 +8,7 @@ public class NextGreaterElementII {
     public int[] nextGreaterElements(int[] nums) {
     	int[] next = new int[nums.length];
     	Stack<Integer> stack = new Stack<Integer>();
-    	Arrays.fill(nums, -1);
+    	Arrays.fill(next, -1);
     	int n = nums.length;
     	for(int i = 0; i< 2*n; ++i) {
     		int num = nums[i % n];
