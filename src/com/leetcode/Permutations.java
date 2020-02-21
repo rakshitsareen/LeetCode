@@ -15,8 +15,8 @@ public class Permutations {
 		if(list.size() == nums.length) {res.add(new ArrayList<Integer>(list)); return;}
 		else {
 			for(int i = 0; i < nums.length; ++i) {
-				if(list.contains(a)) continue;
 				int a = nums[i];
+				if(list.contains(a)) continue;
 				list.add(a);
 				backtrack(res, list, nums);
 				list.remove(list.size() - 1);
