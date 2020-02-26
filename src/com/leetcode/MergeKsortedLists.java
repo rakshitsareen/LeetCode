@@ -37,11 +37,29 @@ public class MergeKsortedLists {
 	Queue<ListNode> pqueue = new PriorityQueue<>(comparator);
 	ListNode finalList;
 
+	public ListNode mergeKLists_new(ListNode[] lists) {
+		if (lists == null || lists.length == 0)
+			return null;
+		ListNode res = new ListNode(0);
+		ListNode save = res;
+		PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>((a, b) -> a.val - b.val);
+		for (ListNode node : lists)
+			if (node != null)
+				heap.offer(node);
+		while (!heap.isEmpty()) {
+			res.next = heap.poll();
+			res = res.next;
+			if (res != null && res.next != null)
+				heap.offer(res.next);
+		}
+		return save.next;
+	}
+
 	public ListNode mergeKLists(ListNode[] lists) {
 		/*
-		 * Algorithm: Insert each lists' head into the heap (pqueue) remove one
-		 * and insert it in final list. move the selected min node forward.
-		 * repeat until all lists are exhausted.
+		 * Algorithm: Insert each lists' head into the heap (pqueue) remove one and
+		 * insert it in final list. move the selected min node forward. repeat until all
+		 * lists are exhausted.
 		 */
 
 		ListNode head = null;
