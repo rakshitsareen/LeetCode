@@ -18,13 +18,8 @@ public class TopKElements {
 			map.put(n, map.getOrDefault(n, 0) + 1);
 		}
 		// max heap that will keep the entries sorted based on the frequency
-		PriorityQueue<Map.Entry<Integer, Integer>> heap = new PriorityQueue<>(
-				new Comparator<Map.Entry<Integer, Integer>>() {
-					@Override
-					public int compare(Entry<Integer, Integer> a, Entry<Integer, Integer> b) {
-						return b.getValue() - a.getValue();
-					}
-				});
+		PriorityQueue<Map.Entry<Integer, Integer>> heap = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+
 		// add the entries from the map into the heap.
 		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 			heap.add(entry);
