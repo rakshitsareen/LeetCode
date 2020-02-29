@@ -9,24 +9,46 @@ public class SlidingWindowMaximum {
 		if (nums == null || nums.length == 0)
 			return new int[0];
 		int[] result = new int[nums.length - k + 1];
-		Deque<Integer> dq = new ArrayDeque<>();	// deque contains indices of the values
+		Deque<Integer> dq = new ArrayDeque<>(); // deque contains indices of the values
 		for (int i = 0; i < k; i++) {
 			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()])
 				dq.removeLast(); // removing indices where element is less than
 									// the integer being considered.
-			dq.add(i); // adding integral indices to the end, btw, this adds to the tail and not the head.
-		}	// till here we have an initial window setup, now we can proceed with the main 
+			dq.add(i); // adding integral indices to the end, btw, this adds to the tail and not the
+						// head.
+		} // till here we have an initial window setup, now we can proceed with the main
 			// algorithm which is just the extension of what we did just now
 		for (int i = k; i < nums.length; i++) {
 			result[i - k] = nums[dq.getFirst()];
-			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()])	// remove all elements which are less than the el being considered.
+			while (!dq.isEmpty() && nums[i] >= nums[dq.getLast()]) // remove all elements which are less than the el
+																	// being considered.
 				dq.removeLast();
-			while (!dq.isEmpty() && dq.getFirst() <= i - k)	// remove those which are not in current window.
+			while (!dq.isEmpty() && dq.getFirst() <= i - k) // remove those which are not in current window.
 				dq.removeFirst();
-			dq.add(i);	// add present el for future consideration.
+			dq.add(i); // add present el for future consideration.
 		}
 		result[nums.length - k] = nums[dq.getFirst()]; // why ?
 		return result;
+	}
+
+	public int[] maxSlidingWindow_second_try(int[] nums, int k) {
+		if (nums == null || k <= 0)
+			return new int[0];
+		Deque<Integer> dq = new ArrayDeque<>();
+		int n = nums.length;
+		int[] r = new int[n - k + 1];
+		int ri = 0;
+		for (int i = 0; i < n; ++i) {
+			if (!dq.isEmpty() && dq.peek() < i - k + 1)
+				dq.poll();
+			while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i])
+				dq.pollLast();
+			dq.offer(i);
+			if (i >= k - 1) {
+				r[ri++] = nums[dq.peek()];
+			}
+		}
+		return r;
 	}
 
 	public static void main(String[] args) {
@@ -39,43 +61,28 @@ public class SlidingWindowMaximum {
 	}
 }
 
-
-
-
 /*
-Buttercola Solution
-
-
-public class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k) {
-        if (nums == null || nums.length == 0 || k <= 0) {
-            return new int[0];
-        }
-         
-        Deque<Integer> deque = new LinkedList<Integer>();
-        int[] result = new int[nums.length - k + 1];
-         
-        for (int i = 0; i < nums.length; i++) {
-            while (!deque.isEmpty() && nums[i] >= nums[deque.getLast()]) {
-                deque.removeLast();
-            }
-             
-            deque.addLast(i);
-             
-            // Remove if the size of the deque is greater than k
-            if (i - deque.getFirst() + 1 > k) {
-                deque.removeFirst();
-            }
-             
-            // Add into the result
-            if (i + 1 >= k) {
-                result[i + 1 - k] = nums[deque.getFirst()];
-            }
-        }
-         
-        return result;
-    }
-}
-
-*
-*/
+ * Buttercola Solution
+ * 
+ * 
+ * public class Solution { public int[] maxSlidingWindow(int[] nums, int k) { if
+ * (nums == null || nums.length == 0 || k <= 0) { return new int[0]; }
+ * 
+ * Deque<Integer> deque = new LinkedList<Integer>(); int[] result = new
+ * int[nums.length - k + 1];
+ * 
+ * for (int i = 0; i < nums.length; i++) { while (!deque.isEmpty() && nums[i] >=
+ * nums[deque.getLast()]) { deque.removeLast(); }
+ * 
+ * deque.addLast(i);
+ * 
+ * // Remove if the size of the deque is greater than k if (i - deque.getFirst()
+ * + 1 > k) { deque.removeFirst(); }
+ * 
+ * // Add into the result if (i + 1 >= k) { result[i + 1 - k] =
+ * nums[deque.getFirst()]; } }
+ * 
+ * return result; } }
+ *
+ * 
+ */
