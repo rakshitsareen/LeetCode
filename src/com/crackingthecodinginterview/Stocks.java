@@ -83,6 +83,18 @@ public class Stocks {
 		return maxsumtill;
 	}
 
+	public int solWithOneTransactionAgain(int[] prices) {
+		if (prices == null || prices.length <= 1)
+			return 0;
+		int minprice = Integer.MAX_VALUE;
+		int maxprofit = Integer.MIN_VALUE;
+		for (int i = 0; i < prices.length; ++i) {
+			minprice = Math.min(minprice, prices[i]);
+			maxprofit = Math.max(maxprofit, prices[i] - minprice);
+		}
+		return maxprofit;
+	}
+
 	public int solWithAtMostKTransactions(int[] nums, int k) {
 		int[][] dp = new int[k + 1][nums.length];
 		// dp[k][i] means the maximum profit we can get by making k transactions by
