@@ -1,30 +1,31 @@
 package com.leetcode;
 
-import java.util.Stack;
-
 public class TrappingRainWater {
 
-	// stack based solution
-	public static int trap(int[] height) {
-		if (null == height || height.length < 3)
-			return 0;
-		Stack<Integer> stack = new Stack<Integer>();
-//		stack.push(height[0]);
-		int i = 0, maxWater = 0, maxBotWater = 0;
-		while (i < height.length) {
-			if (stack.isEmpty() || height[i] <= height[stack.peek()]) {
-				stack.push(i);
-				++i;
-			}
-			else {
-				
+	public static int trap(int[] A) {
+		int left = 0, right = A.length - 1;
+		int maxleft = 0, maxright = 0;
+		int res = 0;
+		while (left <= right) {
+			if (A[left] <= A[right]) {
+				if (A[left] >= maxleft)
+					maxleft = A[left];
+				else
+					res += maxleft - A[left];
+				left++;
+			} else {
+				if (A[right] >= maxright)
+					maxright = A[right];
+				else
+					res += maxright - A[right];
+				right--;
 			}
 		}
-		return 0;
+		return res;
 	}
 
 	public static void main(String[] args) {
-
+		System.out.println(trap(new int[] { 1, 2, 3, 4, 5 }));
 	}
 
 }
