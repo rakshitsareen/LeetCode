@@ -22,6 +22,5 @@ public class Search2DMatrixI {
 		}
 		return false;
 	
-    }}
-
+    }
 }
