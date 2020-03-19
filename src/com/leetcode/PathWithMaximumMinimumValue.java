@@ -1,6 +1,8 @@
 package com.leetcode;
 
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class PathWithMaximumMinimumValue {
 
@@ -31,5 +33,46 @@ public class PathWithMaximumMinimumValue {
 		}
 		return 0;
 	}
+	
+	int global_min = Integer.MAX_VALUE;
 
+	public static int maximumMinimumPath_sg(int[][] A) {
+		int mini = Integer.MAX_VALUE;
+		boolean[][] visited = new boolean[A.length][A[0].length];
+		return findMin(A, 0, 0, mini, visited);
+	}
+
+	public static int findMin(int[][] A, int i, int j, int mini, boolean[][] visited) {
+		int r = A.length;
+		int c = A[0].length;
+		if (i >= r || j >= c || i < 0 || j < 0)
+			return mini;
+		if (visited[i][j])
+			return mini;
+		if (A[i][j] < mini)
+			mini = A[i][j];
+		visited[i][j] = true;
+		if (i == r - 1 && j == c - 1)
+			return mini;
+//		int minh = Math.min(mini, A[i][j]);
+		return Math.max(Math.max(findMin(A, i + 1, j, mini, visited), findMin(A, i, j + 1, mini, visited)),
+				Math.max(findMin(A, i - 1, j, mini, visited), findMin(A, i, j - 1, mini, visited)));
+//		if (i < r - 1) {
+//			if (j < c - 1) {
+//				return Math.max(findMin(A, i + 1, j, mini), findMin(A, i, j + 1, mini));
+//			} else {
+//				return findMin(A, i + 1, j, mini);
+//			}
+//		} else if (j < c - 1) {
+//			return findMin(A, i, j + 1, mini);
+//		}
+//		return mini;
+	}
+
+	public static void main(String[] args) {
+//		int[][] a = { { 2, 2, 1, 2, 2, 2 }, { 1, 2, 2, 2, 1, 2 } };
+		int[][] a = { { 5, 1 }, { 2, 6 } };
+//		System.out.println(new PathWithMaximumMinimumValue().maximumMinimumPath(a));
+		System.out.println(maximumMinimumPath_sg(a));
+	}
 }
