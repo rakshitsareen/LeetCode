@@ -28,6 +28,19 @@ public class MaximumSubarray {
 		return maxSum;
 	}
 
+	public int maxSubArray2(int[] nums) {
+		int maxTillHere = nums[0];
+		int max = maxTillHere;
+		for (int i = 1; i < nums.length; ++i) {
+			if (maxTillHere <= 0)
+				maxTillHere = 0;
+			maxTillHere += nums[i];
+			if (maxTillHere > max)
+				max = maxTillHere;
+		}
+		return max;
+	}
+
 	public static void main(String[] args) {
 		int[] p = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
 		System.out.println(MaximumSubarray.maxSubArray(p));
