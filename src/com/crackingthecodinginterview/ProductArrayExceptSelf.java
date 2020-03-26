@@ -34,6 +34,28 @@ public class ProductArrayExceptSelf {
 		return ans;
 	}
 
+	public int[] productExceptSelf_revision(int[] nums) {
+		int[] lr = new int[nums.length];
+		int[] rl = new int[nums.length];
+		for (int i = 0; i < nums.length; ++i) {
+			lr[i] = i == 0 ? nums[i] : nums[i] * lr[i - 1];
+		}
+		for (int i = nums.length - 1; i >= 0; --i) {
+			rl[i] = i == nums.length - 1 ? nums[nums.length - 1] : nums[i] * rl[i + 1];
+		}
+		int[] output = new int[nums.length];
+		for (int i = 0; i < nums.length; ++i) {
+			if (i == 0) {
+				output[i] = rl[i + 1];
+			} else if (i == nums.length - 1) {
+				output[i] = lr[i - 1];
+			} else {
+				output[i] = lr[i - 1] * rl[i + 1];
+			}
+		}
+		return output;
+	}
+
 	public static void main(String[] args) {
 		int[] nums = { 1, 2, 3, 4 };
 		int[] ans = productExceptSelf(nums);
