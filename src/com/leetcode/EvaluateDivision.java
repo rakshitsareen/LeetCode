@@ -57,6 +57,44 @@ public class EvaluateDivision {
 		visited.remove(start);
 		return ans;
 	}
+	
+	//second try
+    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        Map<String, Map<String, Double>> g;
+        g = buildGraph(equations, values);
+        double[] res = new double[queries.size()];
+        for(int i = 0; i < queries.size(); ++i){
+            res[i] = _dfs(queries.get(i).get(0), queries.get(i).get(1), new HashSet<String>(), g);
+        }
+        return res;
+    }
+    
+    private double _dfs(String start, String end, Set<String> visited, Map<String, Map<String, Double>> g){
+        if(!g.containsKey(start)) return -1;
+        if(g.get(start).containsKey(end)) return g.get(start).get(end);
+        visited.add(start);
+        for(Map.Entry<String, Double> entry : g.get(start).entrySet()){
+            if(!visited.contains(entry.getKey())){
+                double value = _dfs(entry.getKey(), end, visited ,g);
+                if(value != -1) return value * entry.getValue();
+            }
+        }
+        return -1;
+    }
+    
+    private Map<String, Map<String, Double>> buildGraph(List<List<String>> equations, double[] values){
+        Map<String, Map<String, Double>> map = new HashMap<>();
+        for(int i = 0; i < equations.size(); ++i){
+            List<String> list = equations.get(i);
+            String a = list.get(0);
+            String b = list.get(1);
+            map.putIfAbsent(a, new HashMap<>());
+            map.putIfAbsent(b, new HashMap<>());
+            map.get(a).put(b, values[i]);
+            map.get(b).put(a, 1/values[i]);
+        }
+        return map;
+    }
 
 	public static void main(String[] args) {
 
