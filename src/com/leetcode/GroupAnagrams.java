@@ -23,7 +23,13 @@ public class GroupAnagrams {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		String[] inp = {"eat", "tea", "tan", "ate", "nat", "bat"};
+		List<List<String>> res = new GroupAnagrams().groupAnagrams(inp);
+		for(List<String> l : res){
+			for(String s : l)
+				System.out.print(s + " ");
+			System.out.println();
+		}
 	}
 
 }
