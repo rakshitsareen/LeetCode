@@ -29,6 +29,21 @@ public class FruitIntoBaskets {
 		}
 		return maxlen;
 	}
+	public static int totalFruit2(int[] tree) {
+		int res = 0;
+		int i = 0;
+		Map<Integer,Integer> map = new HashMap<>();
+		for(int j = 0 ; j < tree.length; j++){
+			map.put(tree[j], map.getOrDefault(tree[j],0) + 1);
+			while(map.size() > 2){
+				map.put(tree[i], map.get(tree[i]) - 1);
+				if(map.get(tree[i]) == 0) map.remove(tree[i]);
+				i++;
+			}
+			res = Math.max(res,j-i+1);
+		}
+		return res;
+	}
 
 	public static void main(String[] args) {
 		int[] tree = { 1, 2, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
