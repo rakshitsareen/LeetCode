@@ -18,6 +18,7 @@ public class OpentheLock {
                     size--;
                     continue;
                 }
+                assert s != null;
                 if (s.equals(target)) return level;
                 StringBuilder stringBuilder = new StringBuilder(s);
                 for (int i = 0; i < 4; ++i) {
