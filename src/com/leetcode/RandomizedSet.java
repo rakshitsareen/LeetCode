@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 public class RandomizedSet {
 
-	private ArrayList<Integer> list;
-	private HashMap<Integer, Integer> index;
+	private final ArrayList<Integer> list;
+	private final HashMap<Integer, Integer> index;
 	java.util.Random rand = new java.util.Random();
 
 	/** Initialize your data structure here. */

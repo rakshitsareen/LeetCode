@@ -54,13 +54,11 @@ public class SortCharactersByFrequency {
 					return false;
 			} else if (!c.equals(other.c))
 				return false;
-			if (freq != other.freq)
-				return false;
-			return true;
+			return freq == other.freq;
 		}
 
 		public String toString() {
-			return new String(this.c + " : " + this.freq);
+			return this.c + " : " + this.freq;
 		}
 
 		private SortCharactersByFrequency getOuterType() {

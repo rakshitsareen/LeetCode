@@ -55,7 +55,7 @@ class BinaryTreeInorderIter {
 		}
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 
 		/*
 		 * creating a binary tree and entering the nodes

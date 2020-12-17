@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class SerializeandDeserializeBinaryTree {
-	private static String splitter = ",";
-	private static String NN = "X";
+	private static final String splitter = ",";
+	private static final String NN = "X";
 
 	// Encodes a tree to a single string.
 	public static String serialize(TreeNode root) {

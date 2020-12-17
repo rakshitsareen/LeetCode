@@ -7,7 +7,7 @@ public class PeekingIterator implements Iterator<Integer> {
 
 	private Integer next = null;
 	private boolean noSuchElement = false;
-	private Iterator<Integer> iter;
+	private final Iterator<Integer> iter;
 
 	public PeekingIterator(Iterator<Integer> iterator) {
 		// initialize any member here.

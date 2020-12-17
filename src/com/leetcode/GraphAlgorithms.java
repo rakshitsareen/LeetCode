@@ -5,13 +5,13 @@ public class GraphAlgorithms {
 	class Graph {
 
 		public int V, E;
-		Edge edge[];
+		Edge[] edge;
 
 		class Edge {
 			int src, dest;
-		};
+		}
 
-		public Graph(int v, int e) {
+        public Graph(int v, int e) {
 			this.V = v;
 			this.E = e;
 			edge = new Edge[E];
@@ -23,20 +23,20 @@ public class GraphAlgorithms {
 
 	Graph graph = new Graph(3, 3);
 
-	static int find(int parent[], int i) {
+	static int find(int[] parent, int i) {
 		if (parent[i] == -1)
 			return i;
 		return find(parent, parent[i]);
 	}
 
-	static void union(int parent[], int x, int y) {
+	static void union(int[] parent, int x, int y) {
 		int xset = find(parent, x);
 		int yset = find(parent, y);
 		parent[xset] = yset;
 	}
 
 	static boolean isCycle(Graph g) {
-		int parent[] = new int[g.V];
+		int[] parent = new int[g.V];
 		for (int i = 0; i < g.V; i++)
 			parent[i] = -1;
 

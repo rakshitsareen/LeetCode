@@ -7,7 +7,7 @@ public class ConfusingNumberII {
 	static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 	static int limit;
 	static int output = 0;
-	static private int[] nums = { 0, 1, 6, 8, 9 };
+	static private final int[] nums = { 0, 1, 6, 8, 9 };
 
 	public static int confusingNumberII(int N) {
 		map.put(9, 6);

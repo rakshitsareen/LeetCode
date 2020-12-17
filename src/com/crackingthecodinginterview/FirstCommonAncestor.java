@@ -34,11 +34,8 @@ public class FirstCommonAncestor {
 		if (root == a || root == b)
 			return true;
 
-		if ((root != a && root != b) && (left || right))
-			return true;
-
-		return false;
-	}
+        return (root != a && root != b) && (left || right);
+    }
 
 	public static void main(String[] args) {
 		Tree tree = new Tree();

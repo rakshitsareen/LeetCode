@@ -147,7 +147,7 @@ public class CoxAutomotive {
 			}
 			total_pages--;
 		}
-		Collections.sort(Arrays.asList(title));
+		Arrays.sort(title);
 		return title;
 	}
 

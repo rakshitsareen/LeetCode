@@ -19,7 +19,7 @@ public class Coins {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 25, 10, 5, 1 };
+		int[] arr = { 25, 10, 5, 1 };
 		int m = arr.length;
 		int n = 100;
 		// countWays(arr, m, n);

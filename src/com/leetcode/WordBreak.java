@@ -13,10 +13,7 @@ public class WordBreak {
 		final int n = s.length();
 		boolean[][] dp = new boolean[n][n];
 		for (int i = 0; i < n; i++)
-			if (dict.contains(s.substring(i, i + 1)))
-				dp[i][i] = true;
-			else
-				dp[i][i] = false;
+            dp[i][i] = dict.contains(s.substring(i, i + 1));
 		for (int len = 2; len <= n; len++)
 			for (int i = 0; i <= n - len; i++) {
 				if (dict.contains(s.substring(i, i + len)))

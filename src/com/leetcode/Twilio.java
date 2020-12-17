@@ -11,7 +11,7 @@ public class Twilio {
 
 	private static final Scanner scan = new Scanner(System.in);
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) throws Exception {
 		String filename;
 		filename = "inp.txt";
 		// Your code here

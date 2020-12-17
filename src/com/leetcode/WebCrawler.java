@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.Set;
 
 interface HtmlParser {
-	public List<String> getUrls(String url);
+	List<String> getUrls(String url);
 }
 
 public class WebCrawler {

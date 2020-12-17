@@ -10,14 +10,14 @@ public class Kruskals {
 		public int compareTo(Edge compareEdge) {
 			return this.weight - compareEdge.weight;
 		}
-	};
+	}
 
-	class subset {
+    class subset {
 		int parent, rank;
-	};
+	}
 
-	int V, E;
-	Edge edge[];
+    int V, E;
+	Edge[] edge;
 
 	public Kruskals(int v, int e) {
 		this.V = v;
@@ -28,14 +28,14 @@ public class Kruskals {
 		}
 	}
 
-	int find(subset subsets[], int i) {
+	int find(subset[] subsets, int i) {
 		if (subsets[i].parent != i) {
 			subsets[i].parent = find(subsets, subsets[i].parent);
 		}
 		return subsets[i].parent;
 	}
 
-	void union(subset subsets[], int i, int j) {
+	void union(subset[] subsets, int i, int j) {
 		int xroot = find(subsets, i);
 		int yroot = find(subsets, j);
 		if (subsets[xroot].rank < subsets[yroot].rank)
@@ -49,12 +49,12 @@ public class Kruskals {
 	}
 
 	void KruskalsMST() {
-		Edge result[] = new Edge[V]; // the resultant MST.
+		Edge[] result = new Edge[V]; // the resultant MST.
 		for (int i = 0; i < V; i++)
 			result[i] = new Edge();
 		Arrays.sort(edge);
 
-		subset subsets[] = new subset[V];
+		subset[] subsets = new subset[V];
 		for (int i = 0; i < V; i++)
 			subsets[i] = new subset();
 		for (int v = 0; v < V; v++) {

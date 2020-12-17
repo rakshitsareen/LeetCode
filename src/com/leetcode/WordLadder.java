@@ -33,8 +33,8 @@ public class WordLadder {
 			int step = p.step;
 			for (int i = 0; i < considering.length(); i++) {
 				for (char c : alphabet) {
-					String newString = considering.substring(0, i) + Character.toString(c)
-							+ considering.substring(i + 1, considering.length());
+					String newString = considering.substring(0, i) + c
+							+ considering.substring(i + 1);
 					// System.out.println(newString);
 					if (dict.contains(newString) && !visited.contains(newString)) {
 						visited.add(newString);

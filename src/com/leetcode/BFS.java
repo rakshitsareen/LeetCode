@@ -55,7 +55,7 @@ public class BFS {
 		this.graph = graph;
 		this.adj = this.graph.getAdj();
 		Queue<Integer> queue = new LinkedList<>();
-		boolean visited[] = new boolean[graph.getV()];
+		boolean[] visited = new boolean[graph.getV()];
 
 		visited[source] = true;
 		queue.add(source);

@@ -38,11 +38,8 @@ class TwitterPair {
 //		} else if (!engagementCount.equals(other.engagementCount))
 //			return false;
 		if (engangementData == null) {
-			if (other.engangementData != null)
-				return false;
-		} else if (!engangementData.equals(other.engangementData))
-			return false;
-		return true;
+			return other.engangementData == null;
+		} else return engangementData.equals(other.engangementData);
 	}
 
 	public TwitterPair(String engangementData, Integer engagementCount) {
@@ -73,8 +70,8 @@ public class TwitterTimeSeries {
 	private TreeMap<String, List<TwitterPair>> DATA;
 
 	private static String[] INTERVALS;
-	private static int NO_OF_INTERVALS = 2;
-	private static Scanner in = new Scanner(System.in);
+	private static final int NO_OF_INTERVALS = 2;
+	private static final Scanner in = new Scanner(System.in);
 
 	public static void inputIntervals() {
 

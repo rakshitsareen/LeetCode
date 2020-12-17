@@ -35,9 +35,7 @@ class Event implements Comparable<Event> {
 		}
 		if (o instanceof Event) {
 			Event _o = (Event) o;
-			if ((_o.x == this.x) && _o.y == this.y && _o.id == this.id && this.prices == _o.prices) {
-				return true;
-			}
+			return (_o.x == this.x) && _o.y == this.y && _o.id == this.id && this.prices == _o.prices;
 		}
 		return false;
 	}
@@ -48,7 +46,7 @@ class Event implements Comparable<Event> {
 			return 0;
 		}
 		if (o instanceof Event) {
-			Event _o = (Event) o;
+			Event _o = o;
 			if ((_o.x == this.x) && _o.y == this.y && _o.id == this.id && this.prices == _o.prices) {
 				return 0;
 			}
@@ -87,7 +85,7 @@ public class SolutionGoGo {
 		return col.get(col.firstKey()).first();
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) throws Exception {
 		/* Enter your code here. Read input from STDIN. Print output to STDOUT */
 		Scanner scan = new Scanner(System.in);
 		List<Event> elist = new ArrayList<>();

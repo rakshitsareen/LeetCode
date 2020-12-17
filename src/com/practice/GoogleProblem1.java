@@ -15,7 +15,7 @@ public class GoogleProblem1 {
 			return 0;
 		if (a == 0 & b > 0)
 			return -1;
-		int rep = (int) (b / a + 1);
+		int rep = b / a + 1;
 		int counter = 0;
 		while (rep >= 0) {
 			result = result.append(A);

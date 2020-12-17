@@ -1,11 +1,6 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class AnalyzeUserWebsiteVisitPattern {
 	public List<String> mostVisitedPattern(String[] username, int[] timestamp, String[] website) {
@@ -40,11 +35,8 @@ public class AnalyzeUserWebsiteVisitPattern {
 			}
 		}
 
-		List<String> res = new ArrayList<>();
 		String[] ans = seq.split(",");
-		for (String s : ans)
-			res.add(s);
-		return res;
+		return new ArrayList<>(Arrays.asList(ans));
 	}
 
 	public Set<String> generatesubs(List<String> list) {

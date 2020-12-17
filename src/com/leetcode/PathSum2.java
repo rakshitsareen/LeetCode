@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PathSum2 {
 
-	private List<List<Integer>> globalList = new LinkedList<>();
+	private final List<List<Integer>> globalList = new LinkedList<>();
 	Integer[] pathTillNow = new Integer[100];	// assuming there is no leg greater than 100 elements.
 	
 	public List<List<Integer>> pathSum(TreeNode root, int sum) {

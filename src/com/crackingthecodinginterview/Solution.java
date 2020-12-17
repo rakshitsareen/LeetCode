@@ -59,8 +59,8 @@ public class Solution {
 		Iterator<Map.Entry<Integer, Integer>> itr = likeCountByFollowers.entrySet().iterator();
 		while (itr.hasNext()) {
 			Map.Entry<Integer, Integer> pair = itr.next();
-			if ((int) pair.getValue() >= minLikeThreshold) {
-				ans.add((int) pair.getKey());
+			if (pair.getValue() >= minLikeThreshold) {
+				ans.add(pair.getKey());
 			}
 		}
 

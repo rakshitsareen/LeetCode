@@ -4,7 +4,7 @@ public class BalancedParen {
 
 	static class stack {
 		int top = -1;
-		char items[] = new char[100];
+		char[] items = new char[100];
 
 		void push(char x) {
 			if (top == 99) {
@@ -26,7 +26,7 @@ public class BalancedParen {
 		}
 
 		boolean isEmpty() {
-			return (top == -1) ? true : false;
+			return top == -1;
 		}
 	}
 
@@ -39,16 +39,13 @@ public class BalancedParen {
 			return true;
 		else if (character1 == '{' && character2 == '}')
 			return true;
-		else if (character1 == '[' && character2 == ']')
-			return true;
-		else
-			return false;
+		else return character1 == '[' && character2 == ']';
 	}
 
 	/*
 	 * Return true if expression has balanced Parenthesis
 	 */
-	static boolean areParenthesisBalanced(char exp[]) {
+	static boolean areParenthesisBalanced(char[] exp) {
 		/* Declare an empty character stack */
 		stack st = new stack();
 
@@ -92,11 +89,8 @@ public class BalancedParen {
 		 * without a closing parenthesis
 		 */
 
-		if (st.isEmpty())
-			return true; /* balanced */
-		else { /* not balanced */
-			return false;
-		}
+        /* not balanced */
+        return st.isEmpty(); /* balanced */
 	}
 
 	static String[] braces(String[] values) {
@@ -114,7 +108,7 @@ public class BalancedParen {
 	/* UTILITY FUNCTIONS */
 	/* driver program to test above functions */
 	public static void main(String[] args) {
-		char exp[] = { '{', '(', ')', '}', '[', ']' };
+		char[] exp = { '{', '(', ')', '}', '[', ']' };
 		if (areParenthesisBalanced(exp))
 			System.out.println("Balanced ");
 		else

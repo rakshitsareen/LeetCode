@@ -10,7 +10,7 @@ public class IsomorphicStrings {
 		int i = 0;
 		while (i < s.length()) {
 			if (map.get(s.charAt(i)) == null) { // never seen before
-				if (map.values().contains(t.charAt(i)))
+				if (map.containsValue(t.charAt(i)))
 					return false;
 				map.put(s.charAt(i), t.charAt(i));
 			} else {

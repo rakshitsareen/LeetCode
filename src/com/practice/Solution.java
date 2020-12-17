@@ -42,10 +42,7 @@ class Solution {
 		}
 
 		public boolean compareIfGreater(Position temp) {
-			if (this.x >= temp.x && this.y >= temp.y)
-				return true;
-			else
-				return false;
+            return this.x >= temp.x && this.y >= temp.y;
 		}
 	}
 

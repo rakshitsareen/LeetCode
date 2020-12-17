@@ -16,7 +16,7 @@ public class PermutationWithoutDups {
 			char head = s.charAt(0);
 			// now stitch this head in all positions of all these permutation and add to
 			// list using iterator.
-			String snew =new String(s.substring(1, s.length()));
+			String snew = s.substring(1);
 			generatePermutationsWitDups(snew, list);
 			// here list will contain all the permutations of the remaining string.
 			Iterator<String> itr = list.iterator();
@@ -27,7 +27,7 @@ public class PermutationWithoutDups {
 				int len = val.length();
 				int i = 0;
 				while (i < len+1) {
-					String nval =  val.substring(0, i) + head + val.substring(i, val.length()); 
+					String nval =  val.substring(0, i) + head + val.substring(i); 
 					nList.add(nval);
 					i++;
 				}
@@ -40,7 +40,7 @@ public class PermutationWithoutDups {
 
 	public static void main(String[] args) {
 		ArrayList<String> list = new ArrayList<>();
-		String s = new String("xyz");
+		String s = "xyz";
 		ArrayList<String> nList = PermutationWithoutDups.generatePermutationsWitDups(s, list);
 		for(String stemp : nList) {
 			System.out.println(stemp);

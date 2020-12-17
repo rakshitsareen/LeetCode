@@ -34,10 +34,7 @@ public class RobotRoomCleaner {
 		@Override
 		public boolean equals(Object o) {
 			Pair node = (Pair) o;
-			if (node.row == row && this.col == col) {
-				return true;
-			}
-			return false;
+			return node.row == row && this.col == col;
 		}
 
 		@Override

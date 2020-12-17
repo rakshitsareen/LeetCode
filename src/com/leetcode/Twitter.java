@@ -37,11 +37,8 @@ public class Twitter {
 			} else if (!x.equals(other.x))
 				return false;
 			if (y == null) {
-				if (other.y != null)
-					return false;
-			} else if (!y.equals(other.y))
-				return false;
-			return true;
+				return other.y == null;
+			} else return y.equals(other.y);
 		}
 
 		public Pair(int x, int y) {
@@ -126,9 +123,7 @@ public class Twitter {
 			return false;
 		if (p1.equals(p2))
 			return true;
-		if (p1.containsAll(p2) && p2.containsAll(p1))
-			return true;
-		return false;
+		return p1.containsAll(p2) && p2.containsAll(p1);
 	}
 
 	public static List<String> _missingWords(String s, String t) {
@@ -167,7 +162,7 @@ public class Twitter {
 					no_of_consecutive_chars += 1;
 					index += 1;
 				}
-				changes = (int)no_of_consecutive_chars/2;
+				changes = no_of_consecutive_chars /2;
 				index +=1;
 			}
 			result.add(changes);

@@ -90,7 +90,7 @@ public class GSSolutionOne {
 			GSSolutionOne.Pair p = date_late.get(date);
 			// if(p == null)
 			// continue;
-			avg = (float) ((float) date_late.get(date).total_late / (float) date_late.get(date).freq);
+			avg = (float) date_late.get(date).total_late / (float) date_late.get(date).freq;
 			if (etime - ctime > avg) {
 				float currLateness = etime - ctime - avg;
 				if (student_relativeLate.get(name) == null) {
@@ -111,8 +111,8 @@ public class GSSolutionOne {
 		Iterator it = student_relativeLate.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<String, Float> pair = (Map.Entry<String, Float>) it.next();
-			if ((Float) pair.getValue() == maxRLate) {
-				result.add((String) pair.getKey());
+			if (pair.getValue() == maxRLate) {
+				result.add(pair.getKey());
 			}
 		}
 		Collections.sort(result);

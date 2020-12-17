@@ -5,7 +5,7 @@ public class FillingBookcaseShelves {
 	public static int minHeightShelves(int[][] books, int shelf_width) {
 		if (null == books || 0 == shelf_width)
 			return 0;
-		int dp[] = new int[books.length + 1];
+		int[] dp = new int[books.length + 1];
 		dp[0] = 0;
 		for (int i = 1; i <= books.length; ++i) {
 			int width = books[i - 1][0];

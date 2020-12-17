@@ -4,7 +4,7 @@ public class ArithmeticSlices {
 
 	public static int numberOfArithmeticSlices(int[] A) {
 		int n = A.length;
-		boolean dp[][] = new boolean[n][n];
+		boolean[][] dp = new boolean[n][n];
 		for (int i = 0; i < n; ++i) {
 			dp[i][i] = false;
 		}
@@ -39,7 +39,7 @@ public class ArithmeticSlices {
 	}
 
 	public static void main(String[] args) {
-		int A[] = { 27, 2, -32, 38, -21, 27, -44, 34, -31, -5, -2, -20, 7, -31, 14, 5, 30, -12, -23, -10, 13, 28, -19,
+		int[] A = { 27, 2, -32, 38, -21, 27, -44, 34, -31, -5, -2, -20, 7, -31, 14, 5, 30, -12, -23, -10, 13, 28, -19,
 				21, -45, 15, -33, 16, 47, -23, -25, -22, 45, 43, -4, 14, -46, 36, 11, -21, -19, 35, 47, 39, 29, -41, -9,
 				-34, 29, -11, -43, -18, 45, -5, 12, 0, 14, -41, 48, -11, 10, 22, -15, 12, -35, 42, 5, -2, -8, 31, -23,
 				45, -17, 25, -21, -12, -6, -2, 0, -21, 33, 7, -35, -6, 43, 10, -38, -12, 40, 10, -9, 18, -31, 18, -1,

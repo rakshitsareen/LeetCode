@@ -35,11 +35,8 @@ public class DistanceOfNodes {
 		if (root == a || root == b)
 			return true;
 
-		if ((root != a && root != b) && (left || right))
-			return true;
-
-		return false;
-	}
+        return (root != a && root != b) && (left || right);
+    }
 
 	public int findLevel(TreeNode root, TreeNode node, int level) {
 		if (root == null)

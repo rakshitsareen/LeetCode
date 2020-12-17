@@ -4,9 +4,9 @@ package com.leetcode;
 // You should not implement it, or speculate about its implementation
 interface MountainArray {
 
-	public int get(int index);
+	int get(int index);
 
-	public int length();
+	int length();
 }
 
 public class FindinMountainArray {

@@ -16,7 +16,7 @@ public class SurroundedRegions {
 					q.add(new int[] { i, j });
 		// from all the O's on the edges, mark all reachable O's as D
 		while (!q.isEmpty()) {
-			int arr[] = q.poll();
+			int[] arr = q.poll();
 			int curr_x = arr[0], curr_y = arr[1];
 			if (0 <= curr_x && curr_x < board.length && 0 <= curr_y && curr_y < board[0].length
 					&& board[curr_x][curr_y] == 'O') {

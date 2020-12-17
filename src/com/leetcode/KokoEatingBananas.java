@@ -23,10 +23,8 @@ public class KokoEatingBananas {
 				hours++;
 			}
 		}
-		if (hours <= H)
-			return true;
-		return false;
-	}
+        return hours <= H;
+    }
 
 	private int getMaxPile(int[] piles) {
 		int output = 0;

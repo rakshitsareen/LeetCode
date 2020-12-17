@@ -70,7 +70,7 @@ public class RemoveInvalidParentheses {
 				continue;
 			for (int j = lj; j <= i; j++)
 				if (s.charAt(j) == bracket[1] && (j == lj || s.charAt(j - 1) != bracket[1]))
-					remove(s.substring(0, j) + s.substring(j + 1, s.length()), ans, li, lj, bracket);
+					remove(s.substring(0, j) + s.substring(j + 1), ans, li, lj, bracket);
 			return;
 		}
 		String reversed = new StringBuilder(s).reverse().toString();

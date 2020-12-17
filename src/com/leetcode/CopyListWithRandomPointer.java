@@ -10,7 +10,7 @@ class _Node {
 	_Node(int x) {
 		this.val = x;
 	}
-};
+}
 
 public class CopyListWithRandomPointer {
 

@@ -12,7 +12,7 @@ class Graph {
 	// An Array of List which contains
 	// references to the Adjacency List of
 	// each vertex
-	List<Integer> adj[];
+	List<Integer>[] adj;
 
 	public Graph(int V)// Constructor
 	{
@@ -32,7 +32,7 @@ public class BuildOrder {
 
 	public void buildOrder(Graph g) { // Create a array to store indegrees of all
 		// vertices. Initialize all indegrees as 0.
-		int indegree[] = new int[g.V];
+		int[] indegree = new int[g.V];
 
 		// Traverse adjacency lists to fill indegrees of
 		// vertices. This step takes O(V+E) time

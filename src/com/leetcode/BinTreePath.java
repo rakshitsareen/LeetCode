@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 public class BinTreePath {
 
-	private List<String> globalList = new LinkedList<>();
+	private final List<String> globalList = new LinkedList<>();
 	String[] pathTillNow = new String[100];	// assuming there is no leg greater than 100 elements.
 	public List<String> binaryTreePaths(TreeNode root) {
 		if(root == null) return new LinkedList<String>();	// no node.

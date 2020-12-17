@@ -1,9 +1,9 @@
 package com.leetcode;
 
 public class MinHeap {
-	private int[] heap;
+	private final int[] heap;
 	private int size;
-	private int maxSize;
+	private final int maxSize;
 
 	private static final int FRONT = 1;
 

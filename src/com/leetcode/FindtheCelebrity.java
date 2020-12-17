@@ -1,7 +1,7 @@
 package com.leetcode;
 
 interface Relation {
-	public boolean knows(int i, int j);
+	boolean knows(int i, int j);
 }
 
 public abstract class FindtheCelebrity implements Relation {

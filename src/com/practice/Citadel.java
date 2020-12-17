@@ -14,7 +14,7 @@ package com.practice;
  */
 
 class Citadel {
-	private static int[] test = { 5, 10, 2, 4, 5, 6 };
+	private static final int[] test = { 5, 10, 2, 4, 5, 6 };
 
 	synchronized private static int maxProfit(int[] test) {
 		if (test == null || test.length == 0)

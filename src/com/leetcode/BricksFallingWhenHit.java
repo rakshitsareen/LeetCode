@@ -8,10 +8,8 @@ public class BricksFallingWhenHit {
 	int[] dc = { 0, 1, 0, -1 };
 
 	public boolean valid(int r, int c) {
-		if (0 >= r || r >= g.length || 0 >= c || c >= g[0].length)
-			return false;
-		return true;
-	}
+        return 0 < r && r < g.length && 0 < c && c < g[0].length;
+    }
 
 	public boolean falling(int r, int c) {
 		if (!valid(r, c) || g[r][c] == 0)

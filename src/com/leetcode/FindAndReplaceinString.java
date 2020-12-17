@@ -9,7 +9,7 @@ public class FindAndReplaceinString {
         Arrays.fill(match, -1);
         for(int i = 0; i < indexes.length ; ++i){
             int ix = indexes[i];
-            if(S.substring(ix, ix+sources[i].length()).equals(sources[i]))
+            if(S.startsWith(sources[i], ix))
                 match[ix] = i;
         }
         int ix = 0;

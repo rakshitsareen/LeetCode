@@ -21,9 +21,9 @@ public class PopulatingNextRightPointersinEachNode {
 			right = _right;
 			next = _next;
 		}
-	};
+	}
 
-	public Node connect(Node root) {
+    public Node connect(Node root) {
 		Node temp = new Node(0);
 		Node save_root = root;
 		while (root != null) {

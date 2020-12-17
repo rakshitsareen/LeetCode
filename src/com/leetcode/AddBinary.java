@@ -45,7 +45,7 @@ public class AddBinary {
 				ans = addBit(Integer.parseInt(Character.toString(a.charAt(lena - 1))), 0);
 			else
 				ans = addBit(Integer.parseInt(Character.toString(b.charAt(lenb - 1))), 0);
-			output.append(Integer.toString(ans));
+			output.append(ans);
 			lena--;
 			lenb--;
 		}

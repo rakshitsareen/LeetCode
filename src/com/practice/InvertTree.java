@@ -65,7 +65,7 @@ public class InvertTree {
 		tree.postorder(tree.root);
 		tree.invertTreeIter(tree.root);
 		tree.invertTreeRec(tree.root);
-		System.out.println("");
+		System.out.println();
 		tree.postorder(tree.root);
 	}
 }

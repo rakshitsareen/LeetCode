@@ -11,7 +11,7 @@ public class RecursiveMultiply {
 	public int recMulMemo(int a, int b) {
 		int bigger = a < b ? b : a;
 		int smaller = a < b ? a : b;
-		int memo[] = new int[smaller +1];
+		int[] memo = new int[smaller +1];
 		return recMulMemoUtil(smaller, bigger, memo);
 	}
 	

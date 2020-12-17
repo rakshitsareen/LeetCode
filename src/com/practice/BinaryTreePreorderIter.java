@@ -48,7 +48,7 @@ public class BinaryTreePreorderIter {
 	}
 
 	// driver program to test above functions
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		BinaryTreePreorderIter tree = new BinaryTreePreorderIter();
 		tree.root = new TreeNode(10);
 		tree.root.left = new TreeNode(8);

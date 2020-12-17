@@ -10,7 +10,7 @@ public class StringCompression {
 			consecutiveOccurences++;
 			if (i+1 >= s.length() || s.charAt(i + 1) != s.charAt(i)) {
 				// dump the string
-				compressed.append(s.charAt(i)).append(String.valueOf(consecutiveOccurences));
+				compressed.append(s.charAt(i)).append(consecutiveOccurences);
 				consecutiveOccurences = 0;
 			}
 		}

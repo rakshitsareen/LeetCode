@@ -75,7 +75,7 @@ public class RecoverBST {
 		RecoverBST sol = new RecoverBST();
 		sol.printInorder(root);
 		sol.correctBST(root);
-		System.out.println("");
+		System.out.println();
 		sol.printInorder(root);
 	}
 

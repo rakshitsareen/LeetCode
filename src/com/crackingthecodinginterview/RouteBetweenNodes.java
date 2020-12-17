@@ -14,7 +14,7 @@ class Node {
 
 enum State {
 	VISITING, VISITED, UNVISITED
-};
+}
 
 public class RouteBetweenNodes {
 

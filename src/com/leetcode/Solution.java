@@ -9,10 +9,8 @@ class MyRandom implements Iterator<Integer> {
 
 	@Override
 	public boolean hasNext() {
-		if (life > 0)
-			return true;
-		return false;
-	}
+        return life > 0;
+    }
 
 	@Override
 	public Integer next() {

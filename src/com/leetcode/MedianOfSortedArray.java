@@ -20,9 +20,9 @@ public class MedianOfSortedArray {
 
 			if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
 				if ((x + y) % 2 == 0)
-					return (double) ((Math.max(maxLeftX, maxLeftY) + Math.max(minRightX, minRightY)) / 2);
+					return (Math.max(maxLeftX, maxLeftY) + Math.max(minRightX, minRightY)) / 2;
 				else {
-					return (double) Math.max(maxLeftY, maxLeftX);
+					return Math.max(maxLeftY, maxLeftX);
 				}
 			} else if (maxLeftX > minRightY) { // move left in X
 				high = partitionX - 1;
@@ -34,8 +34,8 @@ public class MedianOfSortedArray {
 	}
 
 	public static void main(String[] args) {
-		int x[] = { 1, 3, 8, 9, 15 };
-		int y[] = { 7, 11, 18, 19, 21, 25 };
+		int[] x = { 1, 3, 8, 9, 15 };
+		int[] y = { 7, 11, 18, 19, 21, 25 };
 		System.out.println(findMedianSortedArrays(x, y));
 	}
 }

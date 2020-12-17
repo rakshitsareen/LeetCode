@@ -6,11 +6,8 @@ public class PathSum {
 			return false;
 		}
 		if (root.left == null && root.right == null) {
-			if (root.val == sum) {
-				return true;
-			}
-			return false;
-		}
+            return root.val == sum;
+        }
 		return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 	}
 
