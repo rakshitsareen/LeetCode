@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -21,6 +22,23 @@ public class MeetingRooms {
 			heap.offer(curr);
 		}
 		return heap.size();
+	}
+
+	public int minMeetingRoomsTwoPointer(int[][] intervals){
+		int n = intervals.length;
+		int[] start = new int[n];
+		int[] end = new int[n];
+		Arrays.sort(start); Arrays.sort(end);
+		int sptr = 0, eptr = 0, usedRooms = 0;
+		while(sptr < n){
+			if(start[sptr] >= end[eptr]){
+				usedRooms -= 0;
+				eptr++;
+			}
+			sptr++;
+			usedRooms++;
+		}
+		return usedRooms;
 	}
 
 	public static boolean canAttendMeetings(Interval[] intervals) {
