@@ -38,7 +38,41 @@ public class MinimumWindowSubstring {
 		return s.substring(finalbegin, finalend);
 	}
 
-	public static void main(String[] args) {
+	// attempt 2 - revise
+	public String minWindow2(String s, String t) {
+		if (s == null || s.length() == 0 || t == null || t.length() == 0)
+			return "";
+		Map<Character, Integer> map = new HashMap<>();
+		for(char c : t.toCharArray())
+			map.put(c, map.getOrDefault(c,0) + 1);
+		int left = 0, finalLeft = 0, finalRight = 0, minLen = Integer.MAX_VALUE;
+		int counter = map.size();
+		for(int right = 0; right < s.length(); ++right){
+			char c = s.charAt(right);
+			if(map.containsKey(c)){
+				map.put(c,map.get(c) - 1);
+				if(map.get(c) == 0) counter--;
+			}
+			while(counter == 0){
+				if(map.containsKey(s.charAt(left))){
+					map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
+					if(map.get(s.charAt(left)) > 0) counter++;
+				}
+				if(right - left + 1 < minLen){
+					minLen = right - left + 1;
+					finalLeft = left;
+					finalRight = right;
+				}
+				left++;
+			}
+		}
+		return minLen == Integer.MAX_VALUE ? "" : s.substring(finalLeft, finalRight + 1);
+	}
 
+	public static void main(String[] args) {
+		String s = "ADOBECODEBANC";
+		String t = "ABC";
+		MinimumWindowSubstring minimumWindowSubstring = new MinimumWindowSubstring();
+		System.out.println(minimumWindowSubstring.minWindow2(s,t));
 	}
 }
