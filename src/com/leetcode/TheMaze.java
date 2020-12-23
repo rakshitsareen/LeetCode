@@ -13,13 +13,12 @@ import java.util.Queue;
 
 public class TheMaze {
 
-	int[][] dir = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
-
 	public boolean hasPath(int[][] maze, int[] start, int[] destination) {
 		Queue<int[]> q = new LinkedList<int[]>();
 		boolean[][] visited = new boolean[maze.length][maze[0].length];
 		q.offer(start);
 		visited[start[0]][start[1]] = true;
+		int[][] dir = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 		while (!q.isEmpty()) {
 			int[] point = q.poll();
 			if (point[0] == destination[0] && point[1] == destination[1])
