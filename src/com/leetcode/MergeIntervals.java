@@ -1,11 +1,36 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class MergeIntervals {
+
+	public int[][] merge(int[][] intervals) {
+		List<int[]> result = new ArrayList<>();
+		Arrays.sort(intervals, new Comparator<int[]>() {
+			@Override
+			public int compare(int[] o1, int[] o2) {
+				if(o1[0] == o2[0]) {
+					if (o1[1] == o2[1]) return 0;
+					else return o1[1] - o2[1];
+				}
+				return o1[0] - o2[0];
+			}
+		});
+		int start = intervals[0][0], end = intervals[0][1];
+		for(int[] interval : intervals){
+			if(interval[0] <= end){
+				end = Math.max(end, interval[1]);
+			}
+			else{
+				result.add(new int[]{start, end});
+				start = interval[0];
+				end = interval[1];
+			}
+		}
+		result.add(new int[]{start, end});
+		return result.toArray(new int[result.size()][]);
+	}
 
 	public static List<Interval> merge(List<Interval> intervals) {
 		if (intervals == null)
