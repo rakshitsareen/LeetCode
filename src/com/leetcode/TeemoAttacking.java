@@ -10,4 +10,20 @@ public class TeemoAttacking {
         }
         return output + duration;
     }
+
+    // another way
+    public int findPoisonedDuration_2(int[] timeSeries, int duration) {
+        int output = 0;
+        if(timeSeries == null || timeSeries.length == 0 || duration == 0) return output;
+        int start = timeSeries[0], end = timeSeries[0] + duration;
+        for (int i = 1; i < timeSeries.length; i++) {
+            if(timeSeries[i] > end){
+                output += end - start;
+                start = timeSeries[i];
+            }
+            end = timeSeries[i] + duration;
+        }
+        output += end - start;
+        return output;
+    }
 }
