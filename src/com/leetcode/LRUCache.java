@@ -5,45 +5,45 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class LRUCache {
+public class LRUCache<K,V> {
 
-	class Node {
-		Integer key;
-		Integer val;
+	class Node<K,V> {
+		K key;
+		V val;
 
-		public Node(int key, int val) {
+		public Node(K key, V val) {
 			this.key = key;
 			this.val = val;
 		}
 	}
 
 	int capacity;
-	Deque<Node> queue = new LinkedList<Node>();
-	Map<Integer, Node> map = new HashMap<Integer, Node>();
+	Deque<Node<K, V>> queue = new LinkedList<>();
+	Map<K, Node<K, V>> map = new HashMap<>();
 
 	public LRUCache(int capacity) {
 		this.capacity = capacity;
 	}
 
-	public int get(int key) {
+	public V get(K key) {
 		if (queue == null || queue.size() == 0 || queue.isEmpty()) {
-			return -1;
+			return null;
 		} else {
 			// if the LRU contains the page
 			if (map.containsKey(key)) {
 				// the page is referenced and we need to move the node in the from of the queue
-				Node node = map.get(key);
+				Node<K,V> node = map.get(key);
 				queue.remove(node);
 				map.remove(key);
 				queue.addFirst(node); // Node removed and added first.
 				map.put(key, node);
 				return node.val;
 			} else
-				return -1;
+				return null;
 		}
 	}
 
-	public void put(int key, int value) {
+	public void put(K key, V value) {
 
 		Node node = new Node(key, value); // construct a new node to insert in the list.
 		// If cache is full
@@ -72,7 +72,7 @@ public class LRUCache {
 	}
 
 	public static void main(String[] args) {
-		LRUCache cache = new LRUCache(2);
+		LRUCache <Integer, Integer> cache = new LRUCache(2);
 		/*
 		 * ["LRUCache","put","put","get","put","get","put","get","get","get"]
 		 * [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
