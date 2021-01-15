@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class LRUCache<K,V> {
 
-	class Node<K,V> {
+	static class Node<K,V> {
 		K key;
 		V val;
 
@@ -45,16 +45,16 @@ public class LRUCache<K,V> {
 
 	public void put(K key, V value) {
 
-		Node node = new Node(key, value); // construct a new node to insert in the list.
+		Node<K,V> node = new Node<K, V>(key, value); // construct a new node to insert in the list.
 		// If cache is full
 		if (queue.size() == capacity) {
 			if (!map.containsKey(key)) {
 				// remove the rear node from the list and add new entries in both cache and map
-				Node _node = queue.getLast();
+				Node<K,V> _node = queue.getLast();
 				queue.removeLast();
 				map.remove(_node.key);
 			} else {
-				Node _node = map.get(key);
+				Node<K,V> _node = map.get(key);
 				map.remove(_node.key);
 				queue.remove(_node);
 				// queue.addFirst(node);
@@ -62,7 +62,7 @@ public class LRUCache<K,V> {
 			}
 		} else {
 			if (map.containsKey(key)) {
-				Node _node = map.get(key);
+				Node<K,V> _node = map.get(key);
 				map.remove(_node.key);
 				queue.remove(_node);
 			}
@@ -72,7 +72,7 @@ public class LRUCache<K,V> {
 	}
 
 	public static void main(String[] args) {
-		LRUCache <Integer, Integer> cache = new LRUCache(2);
+		LRUCache <Integer, Integer> cache = new LRUCache<Integer, Integer>(2);
 		/*
 		 * ["LRUCache","put","put","get","put","get","put","get","get","get"]
 		 * [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
