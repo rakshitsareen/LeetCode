@@ -1,6 +1,5 @@
 package com.leetcode;
 
-import sun.lwawt.macosx.CSystemTray;
 
 import java.util.Stack;
 
