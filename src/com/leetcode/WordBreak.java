@@ -21,8 +21,10 @@ public class WordBreak {
 				else {
 					for (int j = i; j < len; j++) {
 						if (j + 1 < len)
-							if (dp[i][j] && dp[j + 1][i + len - 1])
+							if (dp[i][j] && dp[j + 1][i + len - 1]) {
 								dp[i][i + len - 1] = true;
+								break;
+							}
 					}
 				}
 			}
