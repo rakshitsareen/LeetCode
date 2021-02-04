@@ -31,7 +31,7 @@ public class MinimumHeightTrees {
 
         while(!q.isEmpty()){
             int size = q.size();
-            output.clear();
+            output.clear(); // trim out the outer layer
             while(size -- > 0){
                 int curr = q.poll();
                 output.add(curr);

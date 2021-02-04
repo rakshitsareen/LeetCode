@@ -1,10 +1,12 @@
 package com.leetcode;
 
+// https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class MinimumWindowSubstring {
-	
+
 	public String minWindow(String s, String t) {
 		if (s == null || s.length() == 0 || t == null || t.length() == 0)
 			return "";
