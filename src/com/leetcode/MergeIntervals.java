@@ -7,15 +7,12 @@ public class MergeIntervals {
 
 	public int[][] merge(int[][] intervals) {
 		List<int[]> result = new ArrayList<>();
-		Arrays.sort(intervals, new Comparator<int[]>() {
-			@Override
-			public int compare(int[] o1, int[] o2) {
-				if(o1[0] == o2[0]) {
-					if (o1[1] == o2[1]) return 0;
-					else return o1[1] - o2[1];
-				}
-				return o1[0] - o2[0];
+		Arrays.sort(intervals, (o1, o2) -> {
+			if(o1[0] == o2[0]) {
+				if (o1[1] == o2[1]) return 0;
+				else return o1[1] - o2[1];
 			}
+			return o1[0] - o2[0];
 		});
 		int start = intervals[0][0], end = intervals[0][1];
 		for(int[] interval : intervals){
@@ -37,23 +34,20 @@ public class MergeIntervals {
 			return null;
 		if (intervals.size() <= 1)
 			return intervals;
-		Collections.sort(intervals, new Comparator<Interval>() {
-			@Override
-			public int compare(Interval o1, Interval o2) {
-				if (o1.start < o2.start)
+		Collections.sort(intervals, (o1, o2) -> {
+			if (o1.start < o2.start)
+				return -1;
+			if (o1.start > o2.start)
+				return 1;
+			if (o1.start == o2.start) {
+				if (o1.end == o2.end)
+					return 0;
+				if (o1.end < o2.end)
 					return -1;
-				if (o1.start > o2.start)
+				if (o1.end > o2.end)
 					return 1;
-				if (o1.start == o2.start) {
-					if (o1.end == o2.end)
-						return 0;
-					if (o1.end < o2.end)
-						return -1;
-					if (o1.end > o2.end)
-						return 1;
-				}
-				return 0;
 			}
+			return 0;
 		});
 		List<Interval> answer = new ArrayList<>();
 
