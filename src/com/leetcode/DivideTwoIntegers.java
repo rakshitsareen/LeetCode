@@ -1,6 +1,5 @@
 package com.leetcode;
 
-import sun.nio.cs.ext.MacHebrew;
 
 public class DivideTwoIntegers {
     public int divide(int dividend, int divisor) {
