@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import java.util.Stack;
+
 public class TrappingRainWater {
 
 	public static int trap(int[] A) {
@@ -22,6 +24,22 @@ public class TrappingRainWater {
 			}
 		}
 		return res;
+	}
+
+	public static int trap_Stack_Version(int[] height){
+		Stack<Integer> stack = new Stack<>();
+		int output = 0, current = 0;
+		while(current < height.length){
+			while(!stack.isEmpty() && height[current] > height[stack.peek()]){
+				int top = stack.pop();
+				if(stack.isEmpty()) break;
+				int distance = current - stack.peek() - 1;
+				int boundedHeight = Math.min(height[current], height[stack.peek()]) - height[top];
+				output += boundedHeight * distance;
+			}
+			stack.push(current++);
+		}
+		return output;
 	}
 
 	public static void main(String[] args) {
