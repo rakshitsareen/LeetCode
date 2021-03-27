@@ -20,12 +20,7 @@ public class CutOffTreesforGolfEvent {
 			for (int j = 0; j < n; j++)
 				if (forest.get(i).get(j) > 1)
 					list.add(new int[] { forest.get(i).get(j), i, j });
-		Collections.sort(list, new Comparator<int[]>() {
-			@Override
-			public int compare(int[] o1, int[] o2) {
-				return Integer.compare(o1[0], o2[0]);
-			}
-		});
+		Collections.sort(list, Comparator.comparingInt(o -> o[0]));
 		int start_x = 0, start_y = 0;
 		int steps = -1;
 		int output = 0;
