@@ -1,6 +1,7 @@
 package com.leetcode;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class LongestStringChain {
 		int longest = 0;
 		Map<String, Integer> dp = new HashMap<String, Integer>();
 		Arrays.stream(words).forEach(word -> dp.putIfAbsent(word, 1));
-		Arrays.sort(words, (a, b) -> a.length() - b.length());
+		Arrays.sort(words, Comparator.comparingInt(String::length));
 		for (String word : words) {
 			for (int i = 0; i < word.length(); ++i) {
 				String prev = word.substring(0, i) + word.substring(i + 1);
