@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class IntersectionofTwoArrays {
+public class IntersectionOfTwoArrays {
 	public int[] intersection(int[] nums1, int[] nums2) {
 		Set<Integer> n1 = new HashSet<Integer>(Arrays.stream(nums1).boxed().collect(Collectors.toList()));
 		Set<Integer> n2 = new HashSet<Integer>(Arrays.stream(nums2).boxed().collect(Collectors.toList()));
