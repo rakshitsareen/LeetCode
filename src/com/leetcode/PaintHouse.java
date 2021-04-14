@@ -24,4 +24,9 @@ public class PaintHouse {
 		System.out.println(minCost(costs));
 	}
 
+	public int minCostRevision(int[][] cost) {
+		return 0;
+
+	}
+
 }
