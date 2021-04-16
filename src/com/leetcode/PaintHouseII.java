@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import javax.swing.*;
-import javax.swing.plaf.IconUIResource;
 
 public class PaintHouseII {
     public int minCostII(int[][] costs) {
