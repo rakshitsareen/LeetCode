@@ -1,0 +1,17 @@
+package com.leetcode;
+
+
+public class MaxDotProductOfTwoSubsequences {
+    public int maxDotProduct(int[] A, int[] B) {
+        int n = A.length, m = B.length;
+        int[][] dp = new int[n][m];
+        for(int i = 0; i < n; i++) for(int j = 0; j < m; j++){
+            dp[i][j] = A[i]*B[j];
+            if(i > 0 && j > 0) dp[i][j] += Math.max(dp[i - 1][j - 1], 0);
+            if(i > 0) dp[i][j] = Math.max(dp[i - 1][j], dp[i][j]);
+            if(j > 0) dp[i][j] = Math.max(dp[i][j - 1], dp[i][j]);
+        }
+        return dp[n-1][m-1];
+    }
+
+}
