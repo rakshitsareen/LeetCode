@@ -1,9 +1,6 @@
 package com.leetcode;
 
 
-import sun.nio.cs.ext.MacHebrew;
-import sun.print.DialogOnTop;
-
 public class MaximumSumOfTwoNonOverlappingSubarrays {
     public int maxSumTwoNoOverlap(int[] A, int L, int M) {
         for(int i = 1; i < A.length; ++i){

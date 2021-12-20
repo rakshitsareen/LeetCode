@@ -1,8 +1,5 @@
 package com.leetcode;
 
-import com.sun.scenario.effect.Brightpass;
-
-import javax.print.attribute.standard.JobSheets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;

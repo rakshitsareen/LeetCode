@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import org.jetbrains.annotations.Contract;
-
 public class NumberOfIslands {
 
 	private int sink(int i, int j, char[][] grid) {

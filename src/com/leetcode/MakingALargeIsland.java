@@ -1,8 +1,8 @@
 package com.leetcode;
 
-import javafx.util.Pair;
-
 import java.util.*;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class MakingALargeIsland {
     public int N = 0;
@@ -48,10 +48,10 @@ public class MakingALargeIsland {
 
     private List<Pair<Integer, Integer>> move(int x, int y){
         ArrayList<Pair<Integer, Integer>> output = new ArrayList<>();
-        if(isValid(x,y + 1)) output.add(new Pair<>(x,y + 1));
-        if(isValid(x,y - 1)) output.add(new Pair<>(x,y - 1));
-        if(isValid(x + 1,y)) output.add(new Pair<>(x + 1,y));
-        if(isValid(x - 1,y)) output.add(new Pair<>(x - 1,y));
+        if(isValid(x,y + 1)) output.add(new ImmutablePair<>(x,y + 1));
+        if(isValid(x,y - 1)) output.add(new ImmutablePair<>(x,y - 1));
+        if(isValid(x + 1,y)) output.add(new ImmutablePair<>(x + 1,y));
+        if(isValid(x - 1,y)) output.add(new ImmutablePair<>(x - 1,y));
         return output;
     }
 }
