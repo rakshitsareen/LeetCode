@@ -30,7 +30,7 @@ public class ShortestPathinaGridwithObstaclesElimination {
                     int ny = y + dir[1];
                     if(nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
                     int nk = kTillNow + grid[nx][ny];
-                    if(nk >= seen[nx][ny] || nk > k) continue;
+                    if(nk >= seen[nx][ny] || nk > k) continue; // more than seen minimum number of obstacles or more than allowed number of obstacles to jump
                     seen[nx][ny] = nk;  // mark the kth entry of this new x and y
                     queue.offer(new int[]{nx,ny,nk});
                 }
